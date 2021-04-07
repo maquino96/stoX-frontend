@@ -1,15 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux'
 import { BrowserRouter } from "react-router-dom"
 import './index.css';
 import App from './components/App';
+import store from './components/store.js'
+import 'semantic-ui-css/semantic.min.css'
 
 
 
 ReactDOM.render(
-  <BrowserRouter>
+ 
+    <BrowserRouter>
+       <Provider store={store}>
         <App />
-  </BrowserRouter>,
+       </Provider>
+    </BrowserRouter>,
   document.getElementById('root')
 );
 
