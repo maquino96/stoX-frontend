@@ -4,9 +4,9 @@ export const slice = createSlice({
     name: 'app',
     initialState: {
         user: 'Guest',
-        searchSymbol: 'TEST',
-        stockInfo: { name: 'MaxistheGOAT',
-                    age: 24}
+        searchSymbol: '',
+        stockInfo: {},
+        keyData: {}
     },
     reducers: {
         updateUser: (state,action) => {
@@ -17,11 +17,14 @@ export const slice = createSlice({
         },
         updateStockInfo: (state,action) => {
             state.stockInfo = action.payload
+        },
+        updateKeyData: (state, action) => {
+            state.keyData = action.payload
         }
     }
 })
 
-const { updateUser, updateSearch, updateStockInfo } = slice.actions
+const { updateUser, updateSearch, updateStockInfo, updateKeyData } = slice.actions
 
-export {updateUser, updateSearch, updateStockInfo}
+export {updateUser, updateSearch, updateStockInfo, updateKeyData}
 export default slice.reducer

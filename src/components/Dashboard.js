@@ -1,12 +1,17 @@
 import React from 'react'
+import { Grid } from 'semantic-ui-react'
 // import {useHistory} from "react-router-dom"
 
-const Dashboard = () => {
+const Dashboard = ({handleSearchRequest}) => {
     // let history = useHistory();
 
     return (
         <div>
-            Where the dash goes
+            <Grid>
+                <Grid.Row centered>
+                 
+                </Grid.Row>
+            </Grid>
         </div>
     )
 }
