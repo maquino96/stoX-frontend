@@ -6,7 +6,9 @@ export const slice = createSlice({
         user: 'Guest',
         searchSymbol: '',
         stockInfo: {},
-        keyData: {}
+        keyData: {},
+        similarStock: [],
+        batchSimInfo: {}
     },
     reducers: {
         updateUser: (state,action) => {
@@ -20,11 +22,17 @@ export const slice = createSlice({
         },
         updateKeyData: (state, action) => {
             state.keyData = action.payload
+        },
+        updateSimilarStock: (state, action) => {
+            state.similarStock = action.payload
+        },
+        updateBatchSimInfo: (state, action) => {
+            state.batchSimInfo = action.payload
         }
     }
 })
 
-const { updateUser, updateSearch, updateStockInfo, updateKeyData } = slice.actions
+const { updateUser, updateSearch, updateStockInfo, updateKeyData, updateSimilarStock, updateBatchSimInfo } = slice.actions
 
-export {updateUser, updateSearch, updateStockInfo, updateKeyData}
+export {updateUser, updateSearch, updateStockInfo, updateKeyData, updateSimilarStock, updateBatchSimInfo }
 export default slice.reducer

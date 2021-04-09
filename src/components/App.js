@@ -6,7 +6,7 @@ import StockDetail from './StockDetail'
 import Watchlist from './Watchlist'
 import { useDispatch, useSelector } from 'react-redux'
 import { Container } from 'semantic-ui-react'
-import { updateStockInfo, updateKeyData } from './appSlice'
+import { updateStockInfo, updateKeyData, updateSimilarStock, updateBatchSimInfo } from './appSlice'
 import Search from './Search.js'
 function App() {
 
@@ -26,8 +26,19 @@ function App() {
 
       fetch(`${process.env.REACT_APP_BACKEND_URL}/stockdata/${searchSymbol}`)
       .then( r => r.json())
-      .then( data => {console.log(data)
-      dispatch(updateKeyData(data))})
+      .then( data => {dispatch(updateKeyData(data))})
+
+      fetch(`${process.env.REACT_APP_BACKEND_URL}/similarstock/${searchSymbol}`)
+      .then( r => r.json())
+      .then( data => {
+        console.log(data)
+        dispatch(updateSimilarStock(data.similar))
+        data.string &&
+        (fetch(`${process.env.REACT_APP_BACKEND_URL}/batch/${data.string}`)
+        .then( r => r.json())
+        .then( data => {dispatch(updateBatchSimInfo(data))}
+        )) 
+      })
 
   }
 
@@ -42,7 +53,7 @@ function App() {
           </Container>
         </Route>
         <Route exact path='/stockdetail'>
-          <StockDetail />
+          <StockDetail handleSearchRequest={handleSearchRequest}/>
         </Route>
         <Route exact path='watchlist'>
           <Watchlist />
