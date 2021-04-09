@@ -23,7 +23,7 @@ const StockCard = ({ stock, handleSearchRequest }) => {
 
     simObj[stock] ?  
     
-    <Card onClick={(e)=>handleClick(e)} style={{width: '15em', padding: '1em'}}>
+    <Card onMouseOver={()=>dispatch(updateSearch(stock))} onClick={()=>{handleSearchRequest()}} style={{width: '15em', padding: '1em'}}>
       <Card.Content>
         <Card.Header>{stock}</Card.Header>
         <Card.Meta>{simObj[stock].quote.companyName}</Card.Meta>
