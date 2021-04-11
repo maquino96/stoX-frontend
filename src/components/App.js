@@ -18,9 +18,12 @@ function App() {
 
   const onLoadWatchlist = useSelector (state => state.app.onLoadWatchlist)
   const watchlistArray = useSelector( state => state.app.user.watchlists[onLoadWatchlist])
-  const watchlistString = watchlistArray.join(',')
+  let watchlistString = watchlistArray.join(',')
+  console.log(user.watchlists.default.join(','))
   // const stockInfo = useSelector( state => state.app.stockInfo)
-  console.log(watchlistArray)
+
+  // console.log(watchlistArray)
+  // console.log(watchlistString)
 
 
   useEffect(()=>{
@@ -32,7 +35,7 @@ function App() {
     
     // let watchlistString = 
 
-    fetch(`${process.env.REACT_APP_BACKEND_URL}/batch/${watchlistString}`)
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/batch/${user.watchlists.default.join(',')}`)
     .then( r => r.json())
     .then( data => {
       console.log(data)
@@ -61,7 +64,7 @@ function App() {
     // }
 
 
-  }, [user] )
+  }, [watchlistString] )
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -72,16 +75,29 @@ function App() {
       body: JSON.stringify({name: 'Matt', password: '123'}),
     })
       .then((r) => r.json())
-      .then((user) => {
-        console.log(user)
-        dispatch(updateUser(user))
-      })
+      .then((loginUser) => {
 
-    fetch(`${process.env.REACT_APP_BACKEND_URL}/batch/${watchlistString}`)
+      fetch(`${process.env.REACT_APP_BACKEND_URL}/batch/${loginUser.watchlists.default.join(',')}`)
       .then( r => r.json())
       .then( data => {
         console.log(data)
-        dispatch(updateBatchWatchlist(data))})
+        dispatch(updateBatchWatchlist(data))
+        
+      })
+
+      
+        dispatch(updateUser(loginUser))
+      })
+
+      // watchlistString is not being updated
+
+    // fetch(`${process.env.REACT_APP_BACKEND_URL}/batch/${user.watchlists.default.join(',')}`)
+    //   .then( r => r.json())
+    //   .then( data => {
+    //     console.log(data)
+    //     dispatch(updateBatchWatchlist(data))
+        
+    //   })
     
   }
 

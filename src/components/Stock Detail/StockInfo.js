@@ -1,31 +1,42 @@
 import React from "react";
-import { Container, Grid, Table, Label, Header, Button } from "semantic-ui-react";
+import {
+  Container,
+  Grid,
+  Table,
+  Label,
+  Header,
+  Button,
+  Dimmer,
+  Loader,
+  Segment
+} from "semantic-ui-react";
 import { useSelector } from "react-redux";
 import StockChart from "./StockChart";
 
-const StockInfo = ({addToWishlist}) => {
+const StockInfo = ({ addToWishlist }) => {
   const stockInfo = useSelector((state) => state.app.stockInfo);
   const keyData = useSelector((state) => state.app.keyData);
 
   const handleAddClick = (event) => {
-    event.preventDefault()
-    addToWishlist()
+    event.preventDefault();
+    addToWishlist();
+  };
 
-
-  }
+  
 
   return Object.keys(keyData).length ? (
     <div>
       <Container style={{ padding: "1em" }}>
         <Grid>
-    
           <Grid.Row centered>
-            <StockChart/>
+            <StockChart />
           </Grid.Row>
 
-          <Grid.Row> 
+          <Grid.Row>
             <Container>
-              <Button onClick={(e)=>handleAddClick(e)}>Add to Watchlist</Button> 
+              <Button onClick={(e) => handleAddClick(e)}>
+                Add to Watchlist
+              </Button>
             </Container>
           </Grid.Row>
 
@@ -107,7 +118,7 @@ const StockInfo = ({addToWishlist}) => {
                   <Table.Row>
                     <Table.Cell>
                       <Label horizontal> Employees </Label>
-                      {stockInfo.employees}
+                      {new Intl.NumberFormat().format(stockInfo.employees)} 
                     </Table.Cell>
                   </Table.Row>
                 </Table.Body>
@@ -134,9 +145,7 @@ const StockInfo = ({addToWishlist}) => {
                   <Table.Row>
                     <Table.Cell>
                       <Label horizontal> Shares Outstanding </Label>
-                      {new Intl.NumberFormat().format(
-                        keyData.shares_outstanding
-                      )}
+                      {new Intl.NumberFormat().format(keyData.shares_outstanding)}
                     </Table.Cell>
                   </Table.Row>
 
@@ -157,14 +166,14 @@ const StockInfo = ({addToWishlist}) => {
                   <Table.Row>
                     <Table.Cell>
                       <Label horizontal> Earnings Per Share </Label>
-                      {keyData.ttm_eps}
+                      {keyData.ttm_eps.toFixed(2)}
                     </Table.Cell>
                   </Table.Row>
 
                   <Table.Row>
                     <Table.Cell>
                       <Label horizontal> Beta </Label>
-                      {keyData.beta}
+                      {keyData.beta.toFixed(2)}
                     </Table.Cell>
                   </Table.Row>
                 </Table.Body>
@@ -198,7 +207,7 @@ const StockInfo = ({addToWishlist}) => {
                   <Table.Row>
                     <Table.Cell>
                       <Label horizontal> PE Ratio </Label>
-                      {keyData.pe_ratio}
+                      {keyData.pe_ratio.toFixed(2)}
                     </Table.Cell>
                   </Table.Row>
 
@@ -232,7 +241,13 @@ const StockInfo = ({addToWishlist}) => {
       </Container>
     </div>
   ) : (
-    <></>
+    <>
+      <Dimmer.Dimmable as={Segment} dimmed={true}>
+        <Dimmer active={true} inverted>
+          <Loader>Loading</Loader>
+        </Dimmer>
+      </Dimmer.Dimmable>
+    </>
   );
 };
 

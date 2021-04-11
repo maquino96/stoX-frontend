@@ -25,8 +25,8 @@ const WatchlistWidget = () => {
     const watchlistCards = watchlistArray.map( stock => <WatchlistCard key={stock} stock={stock}/>)
 
     return (
-        <div>
-            <Container style={{backgroundColor:'blue', padding: '2em'}} >
+        <div style={{padding: '1em', borderStyle: 'solid'}}>
+            <Container style={{padding: '1em'}} >
                 <Grid.Row >
                     Watchlist Title
                 </Grid.Row>

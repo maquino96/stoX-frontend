@@ -1,10 +1,15 @@
 import React from 'react'
-import { Button } from 'semantic-ui-react'
+import { Button, Container } from 'semantic-ui-react'
 
 const UserInfo = ({handleLogin}) => {
+
+    
     return (
-        <div>
-            <Button onClick={ (e) => handleLogin(e) }> Login </Button>
+        <div style={{padding: '1em', borderStyle: 'solid'}}>
+            <Container>
+              <Button onClick={ (e) => handleLogin(e) }> Login </Button>
+              <Button> Sign Up </Button>
+            </Container> 
         </div>
     )
 }

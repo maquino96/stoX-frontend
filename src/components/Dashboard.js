@@ -10,7 +10,7 @@ const Dashboard = ({ handleSearchRequest, handleLogin }) => {
   return (
     <div>
       <Container>
-      <Grid textAlign='center'>
+      <Grid>
         <Grid.Column width={10}>
                 <Grid.Row>News</Grid.Row>
                 <Grid.Row>Sector Treemap</Grid.Row> 
@@ -20,7 +20,7 @@ const Dashboard = ({ handleSearchRequest, handleLogin }) => {
           <Grid.Row>
               <UserInfo handleLogin={handleLogin}/>
           </Grid.Row>
-          <Grid.Row>
+          <Grid.Row textAlign='right'>
               <WatchlistWidget/>
           </Grid.Row>
         </Grid.Column>
