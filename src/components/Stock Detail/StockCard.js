@@ -12,12 +12,6 @@ const StockCard = ({ stock, handleSearchRequest }) => {
 //   console.log(quote)
     // The above is a possible work around so that functions like toFixed() can read data, something to do with native code (?) 
 
-  const handleClick = (event) => {
-    event.preventDefault()
-    dispatch(updateSearch(stock))
-    handleSearchRequest()
-    dispatch(updateSearch(''))
-  };
 
   return (
 

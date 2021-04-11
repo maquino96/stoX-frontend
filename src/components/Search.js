@@ -12,13 +12,10 @@ const Search = ({handleSearchRequest}) => {
 
     const handleSearch = (event) => {
         event.preventDefault()
-        // dispatch(updateSearch(symbol))
-        // console.log(searchSymbol)
         handleSearchRequest()
         dispatch(updateSearch(''))
         history.push('/stockdetail')
 
-        // setSymbol('')
     }
 
 

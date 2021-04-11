@@ -1,19 +1,33 @@
-import React from 'react'
-import { Grid } from 'semantic-ui-react'
+import React from "react";
+import { Grid, Container} from "semantic-ui-react";
+import UserInfo from "./Dashboard/UserInfo";
+import WatchlistWidget from "./Dashboard/WatchlistWidget";
 // import {useHistory} from "react-router-dom"
 
-const Dashboard = ({handleSearchRequest}) => {
-    // let history = useHistory();
+const Dashboard = ({ handleSearchRequest, handleLogin }) => {
+  // let history = useHistory();
 
-    return (
-        <div>
-            <Grid>
-                <Grid.Row centered>
-                 
-                </Grid.Row>
-            </Grid>
-        </div>
-    )
-}
+  return (
+    <div>
+      <Container>
+      <Grid textAlign='center'>
+        <Grid.Column width={10}>
+                <Grid.Row>News</Grid.Row>
+                <Grid.Row>Sector Treemap</Grid.Row> 
+        </Grid.Column>
 
-export default Dashboard
+        <Grid.Column width={6}>
+          <Grid.Row>
+              <UserInfo handleLogin={handleLogin}/>
+          </Grid.Row>
+          <Grid.Row>
+              <WatchlistWidget/>
+          </Grid.Row>
+        </Grid.Column>
+      </Grid>
+      </Container>
+    </div>
+  );
+};
+
+export default Dashboard;

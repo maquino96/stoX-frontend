@@ -5,7 +5,7 @@ import StockCard from './StockCard'
 
 const SimilarContainer = ({handleSearchRequest}) => {
     const similarObj = useSelector( state => state.app.similarStock)
-    console.log(similarObj)
+    // console.log(similarObj)
 
     const similarComponents = similarObj.map( simstock => <StockCard key={simstock} stock={simstock} handleSearchRequest={handleSearchRequest}/>)
 

@@ -3,14 +3,15 @@ import SimilarContainer from "./Stock Detail/SimilarContainer.js";
 import StockInfo from './Stock Detail/StockInfo.js'
 
 
-const StockDetail = ({handleSearchRequest}) => {
+const StockDetail = ({handleSearchRequest, addToWishlist}) => {
   // let history = useHistory();
 
 
   return (
     <div>
-     <StockInfo/>
-     <SimilarContainer handleSearchRequest={handleSearchRequest}/>
+     <StockInfo addToWishlist={addToWishlist}/>
+     <SimilarContainer 
+     handleSearchRequest={handleSearchRequest}/>
     </div>
   );
 };

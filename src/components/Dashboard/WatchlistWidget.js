@@ -1,9 +1,39 @@
-import React from 'react'
-
+import {useEffect, React} from 'react'
+import { Container, Grid } from 'semantic-ui-react'
+import { useDispatch, useSelector } from 'react-redux'
+import WatchlistCard from './WatchlistCard'
 const WatchlistWidget = () => {
+
+    const dispatch = useDispatch()
+
+    const onLoadWatchlist = useSelector (state => state.app.onLoadWatchlist)
+    // console.log(onLoadWatchlist)
+    const watchlistArray = useSelector( state => state.app.user.watchlists[onLoadWatchlist])
+    // console.log(wishlistInfo)
+
+    // useEffect(()=>{
+
+    //     dispatch(updateBatchWatchlist())
+
+    // },[onLoadWatchlist]) 
+
+
+
+
+
+
+    const watchlistCards = watchlistArray.map( stock => <WatchlistCard key={stock} stock={stock}/>)
+
     return (
         <div>
-            
+            <Container style={{backgroundColor:'blue', padding: '2em'}} >
+                <Grid.Row >
+                    Watchlist Title
+                </Grid.Row>
+                <Grid.Row>
+                    {watchlistCards}
+                </Grid.Row>
+            </Container>         
         </div>
     )
 }
