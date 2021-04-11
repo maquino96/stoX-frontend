@@ -18,13 +18,15 @@ const WatchlistCard = ({ stock }) => {
       <div style={{ padding: ".5em" }}>
         <Card>
           <Card.Content>
-          <Grid>
-            <Grid.Row style={{height: '.0em', padding: '7px'}}>
-              <Grid.Column >
+          <Grid textAlign='center'>
+
+          <Grid.Row style={{height: '1em', padding: '5px', paddingBottom: '5px', fontSize: '10px'}}>
+              <Grid.Column>
               {stockList.quote.companyName}
               </Grid.Column>
             </Grid.Row>
-            <Grid.Row>
+
+            <Grid.Row style={{paddingTop: '15px', paddingBottom: '5px'}}>
             <Grid.Column width={4}>
             <Icon
                   size="large"
@@ -44,7 +46,6 @@ const WatchlistCard = ({ stock }) => {
             <Grid.Column width={4}>
              <Card.Header style={{color: stockList.quote.change >= 0 ? "green" : "red"}}>{`${(stockList.quote.changePercent * 100).toFixed(2)}%`}</Card.Header>
             </Grid.Column>
-
             </Grid.Row>
             
           </Grid>
