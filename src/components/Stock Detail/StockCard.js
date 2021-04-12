@@ -1,10 +1,12 @@
-import React from "react";
+import {useState} from "react";
 import { Card, Container, Dimmer, Segment, Loader } from "semantic-ui-react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateSearch } from "../appSlice";
 
 const StockCard = ({ stock, handleSearchRequest }) => {
   const dispatch = useDispatch();
+
+  const [symbol, setSymbol] = useState('')
 
   let simObj = useSelector((state) => state.app.batchSimInfo);
   //   let changepercent = quote.changePercent
@@ -15,9 +17,9 @@ const StockCard = ({ stock, handleSearchRequest }) => {
   if (simObj[stock]) {
     return (
       <Card
-        onMouseOver={() => dispatch(updateSearch(stock))}
+        onMouseOver={() => setSymbol(stock)}
         onClick={() => {
-          handleSearchRequest();
+          handleSearchRequest(symbol);
         }}
         style={{ width: "15em", padding: "1em" }}
       >

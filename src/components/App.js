@@ -102,19 +102,19 @@ function App() {
     
   }
 
-  const handleSearchRequest = () => {
+  const handleSearchRequest = (symbol=searchSymbol) => {
     // debugger
     // fetch to the backend using the searchSymbol, on a route to a controller that'll make the api requests, make use of env variables here
-      fetch(`${process.env.REACT_APP_BACKEND_URL}/stocks/${searchSymbol}`)
+      fetch(`${process.env.REACT_APP_BACKEND_URL}/stocks/${symbol}`)
       .then( r => r.json())
       .then( data => {dispatch(updateStockInfo(data))
       })
 
-      fetch(`${process.env.REACT_APP_BACKEND_URL}/stockdata/${searchSymbol}`)
+      fetch(`${process.env.REACT_APP_BACKEND_URL}/stockdata/${symbol}`)
       .then( r => r.json())
       .then( data => {dispatch(updateKeyData(data))})
 
-      fetch(`${process.env.REACT_APP_BACKEND_URL}/similarstock/${searchSymbol}`)
+      fetch(`${process.env.REACT_APP_BACKEND_URL}/similarstock/${symbol}`)
       .then( r => r.json())
       .then( data => {
         console.log(data)
