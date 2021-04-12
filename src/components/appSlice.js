@@ -6,7 +6,9 @@ export const slice = createSlice({
         user: {
                 name: 'Guest',
                 id: 1,
-                watchlists: { default: ['SPY', 'DIA']} 
+                watchlists: { default: {id: 999,
+                    arrayList: ['SPY', 'DIA']}
+                } 
             },
         onLoadWatchlist: 'default',
         batchWatchlist: {SPY: {quote: {}}, DIA:{quote:{}}},

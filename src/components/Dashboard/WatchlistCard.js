@@ -21,7 +21,7 @@ const WatchlistCard = ({ stock }) => {
           <Grid textAlign='center'>
 
           <Grid.Row style={{height: '1em', padding: '5px', paddingBottom: '5px', fontSize: '10px'}}>
-              <Grid.Column>
+              <Grid.Column style={{ maxHeight:'10px', overflowY: 'hide' }}>
               {stockList.quote.companyName}
               </Grid.Column>
             </Grid.Row>

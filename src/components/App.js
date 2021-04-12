@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Container } from 'semantic-ui-react'
 import { updateUser, updateStockInfo, updateKeyData, updateSimilarStock, updateBatchSimInfo, updateSearch, updateBatchWatchlist } from './appSlice'
 import Search from './Search.js'
+import HeadNav from './HeadNav';
 function App() {
 
   const dispatch = useDispatch()
@@ -17,9 +18,9 @@ function App() {
   const stockInfo = useSelector( state => state.app.stockInfo )
 
   const onLoadWatchlist = useSelector (state => state.app.onLoadWatchlist)
-  const watchlistArray = useSelector( state => state.app.user.watchlists[onLoadWatchlist])
-  let watchlistString = watchlistArray.join(',')
-  console.log(user.watchlists.default.join(','))
+  // const watchlistArray = useSelector( state => state.app.user.watchlists[onLoadWatchlist])
+  // let watchlistString = watchlistArray.arrayList.join(',')
+  // console.log(user.watchlists[onLoadWatchlist].arrayList.join(','))
   // const stockInfo = useSelector( state => state.app.stockInfo)
 
   // console.log(watchlistArray)
@@ -30,15 +31,15 @@ function App() {
 
     let date = new Date()
     let currMins = date.getHours()*60 + date.getMinutes()
-    let watchlistString = watchlistArray.join(',')
+    // let watchlistString = watchlistArray.join(',')
     // console.log(watchlistString)
     
     // let watchlistString = 
 
-    fetch(`${process.env.REACT_APP_BACKEND_URL}/batch/${user.watchlists.default.join(',')}`)
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/batch/${user.watchlists.default.arrayList.join(',')}`)
     .then( r => r.json())
     .then( data => {
-      console.log(data)
+      // console.log(data)
       dispatch(updateBatchWatchlist(data))})
 
     // const id = setInterval( () => {
@@ -64,7 +65,7 @@ function App() {
     // }
 
 
-  }, [watchlistString] )
+  }, [] )
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -77,7 +78,7 @@ function App() {
       .then((r) => r.json())
       .then((loginUser) => {
 
-      fetch(`${process.env.REACT_APP_BACKEND_URL}/batch/${loginUser.watchlists.default.join(',')}`)
+      fetch(`${process.env.REACT_APP_BACKEND_URL}/batch/${loginUser.watchlists.default.arrayList.join(',')}`)
       .then( r => r.json())
       .then( data => {
         console.log(data)
@@ -149,13 +150,24 @@ function App() {
       exchange: `${stockInfo.exchange}`,
     }
 
-    fetch(`${process.env.REACT_APP_BACKEND_URL}/addtowatchlist/${user.watchlists.currList}`, {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/addtowatchlist/${user.watchlists[onLoadWatchlist].id}`, {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(wishlistObj)
     })
     .then( r => r.json())
-    .then( addedObj => console.log(addedObj))
+    .then( userRender => {
+
+      console.log(userRender)
+      dispatch(updateUser(userRender))
+
+      fetch(`${process.env.REACT_APP_BACKEND_URL}/batch/${userRender.watchlists[onLoadWatchlist].arrayList.join(',')}`)
+      .then( r => r.json())
+      .then( data => {
+        console.log(data)
+        dispatch(updateBatchWatchlist(data))
+        
+      })})
 
     // console.log(wishlistObj)
 
@@ -164,7 +176,7 @@ function App() {
 
   return (
     <div className="App">
-      We R StoX ba bum bum bummmm
+      <HeadNav/>
       <Search handleSearchRequest={handleSearchRequest}/>
       <Switch>
         <Route exact path="/">

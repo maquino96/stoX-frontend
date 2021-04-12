@@ -3,6 +3,7 @@ import { Grid, Container} from "semantic-ui-react";
 import UserInfo from "./Dashboard/UserInfo";
 import WatchlistWidget from "./Dashboard/WatchlistWidget";
 // import {useHistory} from "react-router-dom"
+import LoginContainer from './LoginContainer'
 
 const Dashboard = ({ handleSearchRequest, handleLogin }) => {
   // let history = useHistory();
@@ -18,7 +19,8 @@ const Dashboard = ({ handleSearchRequest, handleLogin }) => {
 
         <Grid.Column width={6}>
           <Grid.Row>
-              <UserInfo handleLogin={handleLogin}/>
+              {/* <UserInfo handleLogin={handleLogin}/> */}
+              <LoginContainer/>
           </Grid.Row>
           <Grid.Row textAlign='right'>
               <WatchlistWidget/>
