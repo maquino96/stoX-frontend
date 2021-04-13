@@ -1,9 +1,11 @@
 import {useEffect, React} from 'react'
-import { Container, Grid } from 'semantic-ui-react'
+import { Container, Grid, Header } from 'semantic-ui-react'
 import { useDispatch, useSelector } from 'react-redux'
 import WatchlistCard from './WatchlistCard'
+import {useHistory} from 'react-router-dom'
 const WatchlistWidget = () => {
 
+    const history = useHistory() 
     const dispatch = useDispatch()
     const user = useSelector( state => state.app.user)
 
@@ -18,6 +20,19 @@ const WatchlistWidget = () => {
 
     // },[onLoadWatchlist]) 
 
+    const handleWatchlistClick = (e) => {
+        e.preventDefault()
+        
+        // if(user.name === 'Guest') {
+
+        //     alert('Please sign in to view your watchlists')
+
+        // } else {
+        // history.push('/watchlist')
+        // }
+
+        history.push('/watchlist')
+    }
 
 
 
@@ -27,7 +42,7 @@ const WatchlistWidget = () => {
         <div style={{padding: '1em', borderStyle: 'solid', textAlign: 'center'}}>
             <Container style={{textAlign: 'center'}}>
                 <Grid.Row >
-                    Watchlist Title
+                    <Header onClick={(e) => handleWatchlistClick(e)} style={{paddingBottom: '.5em', fontFamily: 'Futura,Trebuchet MS,Arial,sans-serif', fontSize: '20px', fontWeight: '700'}}>Watchlist ({onLoadWatchlist})</Header>
                 </Grid.Row>
                 <Grid.Row>
                     {watchlistCards}

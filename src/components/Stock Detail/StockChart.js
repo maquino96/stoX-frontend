@@ -45,12 +45,12 @@ const StockChart = () => {
             xaxis: {
               showgrid: false,
               nticks: 13,
-              autorange: true,
+            //   autorange: true,
               range: ["09:30", "16:00"],
               rangeslider: { range: ["09:30", "16:00"], type: "time" },
             },
             yaxis: {
-            //   autorange: true,
+              autorange: true,
               title: 'Price',
               range: [
                 (Math.min(...chartData.averageY) * 0.98),

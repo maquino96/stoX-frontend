@@ -5,7 +5,7 @@ export const slice = createSlice({
     initialState: {
         user: {
                 name: 'Guest',
-                id: 1,
+                id: 999,
                 watchlists: { default: {id: 999,
                     arrayList: ['SPY', 'DIA']}
                 } 

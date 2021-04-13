@@ -3,7 +3,7 @@ import {useEffect} from 'react'
 import { Switch, Route } from "react-router-dom"
 import Dashboard from './Dashboard'
 import StockDetail from './StockDetail'
-import Watchlist from './Watchlist'
+import PublicWatchlist from './PublicWatchlist'
 import { useDispatch, useSelector } from 'react-redux'
 import { Container } from 'semantic-ui-react'
 import { 
@@ -17,6 +17,7 @@ import {
   updateChartData } from './appSlice'
 import Search from './Search.js'
 import HeadNav from './HeadNav';
+import Watchlist from './Watchlist';
 function App() {
 
   const dispatch = useDispatch()
@@ -206,8 +207,11 @@ function App() {
           handleCardClick={handleCardClick}
           addToWishlist={addToWishlist}/>
         </Route>
-        <Route exact path='/watchlists'>
-          <Watchlist />
+        <Route exact path='/publicwatchlists'>
+          <PublicWatchlist />
+        </Route>
+        <Route exact path='/watchlist'>
+          <Watchlist/>
         </Route>
         <Route path='*'>
           <h1 class='error'> Error: 404 NOT FOUND</h1>

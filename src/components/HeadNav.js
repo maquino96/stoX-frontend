@@ -13,7 +13,7 @@ const HeadNav = () => {
 
     const handleWatchlistCLick = (e) => {
         e.preventDefault()
-        history.push('/watchlists')
+        history.push('/publicwatchlists')
     }
 
     return (
