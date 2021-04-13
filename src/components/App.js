@@ -6,7 +6,15 @@ import StockDetail from './StockDetail'
 import Watchlist from './Watchlist'
 import { useDispatch, useSelector } from 'react-redux'
 import { Container } from 'semantic-ui-react'
-import { updateUser, updateStockInfo, updateKeyData, updateSimilarStock, updateBatchSimInfo, updateSearch, updateBatchWatchlist } from './appSlice'
+import { 
+  updateUser, 
+  updateStockInfo, 
+  updateKeyData, 
+  updateSimilarStock, 
+  updateBatchSimInfo, 
+  updateSearch, 
+  updateBatchWatchlist,
+  updateChartData } from './appSlice'
 import Search from './Search.js'
 import HeadNav from './HeadNav';
 function App() {
@@ -114,10 +122,16 @@ function App() {
       .then( r => r.json())
       .then( data => {dispatch(updateKeyData(data))})
 
+      fetch(`${process.env.REACT_APP_BACKEND_URL}/chartdata/${symbol}`)
+      .then( r => r.json())
+      .then( data => { console.log(data)
+        dispatch(updateChartData(data))
+      })
+
       fetch(`${process.env.REACT_APP_BACKEND_URL}/similarstock/${symbol}`)
       .then( r => r.json())
       .then( data => {
-        console.log(data)
+        // console.log(data)
         dispatch(updateSimilarStock(data.similar))
         data.string &&
         (fetch(`${process.env.REACT_APP_BACKEND_URL}/batch/${data.string}`)
@@ -126,6 +140,8 @@ function App() {
         )) 
       })
       dispatch(updateSearch(''))
+
+      
 
   }
 

@@ -6,7 +6,7 @@ import './index.css';
 import App from './components/App';
 import store from './components/store.js'
 import 'semantic-ui-css/semantic.min.css'
-
+import Plotly from 'react-plotly.js'
 
 
 ReactDOM.render(

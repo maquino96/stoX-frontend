@@ -18,7 +18,7 @@ export const slice = createSlice({
         keyData: {},
         similarStock: [],
         batchSimInfo: {},
-        
+        chartData: {}
     },
     reducers: {
         updateUser: (state,action) => {
@@ -44,6 +44,9 @@ export const slice = createSlice({
         },
         updateBatchSimInfo: (state, action) => {
             state.batchSimInfo = action.payload
+        },
+        updateChartData: (state, action) => {
+            state.chartData = action.payload
         }
     }
 })
@@ -55,7 +58,8 @@ const { updateUser,
         updateSimilarStock, 
         updateBatchSimInfo, 
         updateOnLoadWatchlist, 
-        updateBatchWatchlist} = slice.actions
+        updateBatchWatchlist,
+        updateChartData} = slice.actions
 
 export {updateUser, 
         updateSearch, 
@@ -64,5 +68,6 @@ export {updateUser,
         updateSimilarStock, 
         updateBatchSimInfo, 
         updateOnLoadWatchlist,
-        updateBatchWatchlist}
+        updateBatchWatchlist,
+        updateChartData}
 export default slice.reducer
