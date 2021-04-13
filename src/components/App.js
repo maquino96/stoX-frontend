@@ -206,7 +206,7 @@ function App() {
           handleCardClick={handleCardClick}
           addToWishlist={addToWishlist}/>
         </Route>
-        <Route exact path='watchlist'>
+        <Route exact path='/watchlists'>
           <Watchlist />
         </Route>
         <Route path='*'>

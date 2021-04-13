@@ -1,4 +1,5 @@
 import React from 'react'
+import { Container } from 'semantic-ui-react'
 // import { useHistory } from "react-router-dom"
 
 const Watchlist = () => {
@@ -6,7 +7,10 @@ const Watchlist = () => {
 
     return (
         <div>
-            
+            <Container>
+
+
+            </Container>
         </div>
     )
 }

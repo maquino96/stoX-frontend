@@ -16,10 +16,15 @@ import StockChart from "./StockChart";
 const StockInfo = ({ addToWishlist }) => {
   const stockInfo = useSelector((state) => state.app.stockInfo);
   const keyData = useSelector((state) => state.app.keyData);
+  const user = useSelector( state => state.app.user)
 
   const handleAddClick = (event) => {
     event.preventDefault();
-    addToWishlist();
+    if ( user.name === 'Guest' ) {
+      alert('Please sign in to add to watchlist')
+    } else {
+      addToWishlist()
+    }
   };
 
   
