@@ -1,6 +1,5 @@
 import { useState } from "react";
 import LoginForm from "./Login/LoginForm";
-import { useSelector } from "react-redux";
 import SignupForm from "./Login/SignupForm";
 
 const LoginContainer = () => {
@@ -18,7 +17,6 @@ const LoginContainer = () => {
   };
 
   const [isHidden, setIsHidden] = useState(true);
-  const user = useSelector((state) => state.app.user);
 
   return (
     <div style={{ border: "solid" }}>

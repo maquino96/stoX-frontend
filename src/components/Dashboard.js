@@ -1,6 +1,5 @@
 import React from "react";
 import { Grid, Container} from "semantic-ui-react";
-import UserInfo from "./Dashboard/UserInfo";
 import WatchlistWidget from "./Dashboard/WatchlistWidget";
 // import {useHistory} from "react-router-dom"
 import LoginContainer from './LoginContainer'

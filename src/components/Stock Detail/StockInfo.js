@@ -48,7 +48,7 @@ const StockInfo = ({ addToWishlist }) => {
           <Grid.Row>
             <Grid.Column width={16}>
               <Header as="h3" dividing style={{ padding: ".5em" }}>
-                {`Profile: ${stockInfo.company_name}`}
+                {`Profile: ${stockInfo.company_name ? stockInfo.company_name : stockInfo.companyName}`}
               </Header>
               <Container
                 style={{
@@ -64,24 +64,13 @@ const StockInfo = ({ addToWishlist }) => {
           </Grid.Row>
 
           <Grid.Row>
-            {/* <Grid columns={2}>
-                            <Grid.Column>
-                                Static Profile Info
-                                <br></br>
-                                {stockInfo.company_name}
-                            </Grid.Column>
-                            
-                            <Grid.Column>
-                                Updated API Info
-                            </Grid.Column>
-                        </Grid> */}
             <Grid.Column width={5}>
               <Table celled striped>
                 <Table.Body>
                   <Table.Row>
                     <Table.Cell>
                       <Label horizontal> Company Name</Label>
-                      {`${stockInfo.company_name} - (${stockInfo.symbol})`}
+                      {`${stockInfo.company_name ? stockInfo.company_name : stockInfo.companyName} - (${stockInfo.symbol})`}
                     </Table.Cell>
                   </Table.Row>
 

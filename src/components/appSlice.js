@@ -6,11 +6,11 @@ export const slice = createSlice({
         user: {
                 name: 'Guest',
                 id: 999,
-                watchlists: { default: {id: 999,
+                loadwatchlist: 'Default',
+                watchlists: { Default: {id: 999,
                     arrayList: ['SPY', 'DIA']}
                 } 
             },
-        onLoadWatchlist: 'default',
         batchWatchlist: {SPY: {quote: {}}, DIA:{quote:{}}},
         marketOpen: true, 
         searchSymbol: '',
@@ -23,9 +23,6 @@ export const slice = createSlice({
     reducers: {
         updateUser: (state,action) => {
             state.user = action.payload
-        },
-        updateOnLoadWatchlist: (state, action) => {
-            state.onLoadWatchlist = action.payload
         },
         updateBatchWatchlist: (state, action) => {
             state.batchWatchlist = action.payload
@@ -57,7 +54,6 @@ const { updateUser,
         updateKeyData, 
         updateSimilarStock, 
         updateBatchSimInfo, 
-        updateOnLoadWatchlist, 
         updateBatchWatchlist,
         updateChartData} = slice.actions
 
@@ -67,7 +63,6 @@ export {updateUser,
         updateKeyData, 
         updateSimilarStock, 
         updateBatchSimInfo, 
-        updateOnLoadWatchlist,
         updateBatchWatchlist,
         updateChartData}
 export default slice.reducer

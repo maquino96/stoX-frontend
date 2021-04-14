@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, Container } from "semantic-ui-react";
+import { Container } from "semantic-ui-react";
 import Plot from "react-plotly.js";
 import { useSelector } from "react-redux";
 
@@ -41,7 +41,7 @@ const StockChart = () => {
             autosize: true,
             width: 1150,
             height: 550,
-            title: `${stockInfo.company_name} (${stockInfo.symbol})`,
+            title: `${stockInfo.company_name ? stockInfo.company_name : stockInfo.companyName} (${stockInfo.symbol})`,
             xaxis: {
               showgrid: false,
               nticks: 13,

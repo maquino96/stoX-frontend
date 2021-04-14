@@ -26,26 +26,14 @@ function App() {
   const searchSymbol = useSelector( state => state.app.searchSymbol)
   const stockInfo = useSelector( state => state.app.stockInfo )
 
-  const onLoadWatchlist = useSelector (state => state.app.onLoadWatchlist)
-  // const watchlistArray = useSelector( state => state.app.user.watchlists[onLoadWatchlist])
-  // let watchlistString = watchlistArray.arrayList.join(',')
-  // console.log(user.watchlists[onLoadWatchlist].arrayList.join(','))
-  // const stockInfo = useSelector( state => state.app.stockInfo)
-
-  // console.log(watchlistArray)
-  // console.log(watchlistString)
-
 
   useEffect(()=>{
 
-    let date = new Date()
-    let currMins = date.getHours()*60 + date.getMinutes()
-    // let watchlistString = watchlistArray.join(',')
-    // console.log(watchlistString)
-    
-    // let watchlistString = 
+    // let date = new Date()
+    // let currMins = date.getHours()*60 + date.getMinutes()
 
-    fetch(`${process.env.REACT_APP_BACKEND_URL}/batch/${user.watchlists.default.arrayList.join(',')}`)
+
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/batch/${user.watchlists[user.loadwatchlist].arrayList.join(',')}`)
     .then( r => r.json())
     .then( data => {
       // console.log(data)
@@ -74,7 +62,7 @@ function App() {
     // }
 
 
-  }, [] )
+  },[dispatch, user.watchlists, user.loadwatchlist] )
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -87,7 +75,7 @@ function App() {
       .then((r) => r.json())
       .then((loginUser) => {
 
-      fetch(`${process.env.REACT_APP_BACKEND_URL}/batch/${loginUser.watchlists.default.arrayList.join(',')}`)
+      fetch(`${process.env.REACT_APP_BACKEND_URL}/batch/${loginUser.watchlists[user.loadwatchlist].arrayList.join(',')}`)
       .then( r => r.json())
       .then( data => {
         console.log(data)
@@ -98,21 +86,10 @@ function App() {
       
         dispatch(updateUser(loginUser))
       })
-
-      // watchlistString is not being updated
-
-    // fetch(`${process.env.REACT_APP_BACKEND_URL}/batch/${user.watchlists.default.join(',')}`)
-    //   .then( r => r.json())
-    //   .then( data => {
-    //     console.log(data)
-    //     dispatch(updateBatchWatchlist(data))
-        
-    //   })
     
   }
 
   const handleSearchRequest = (symbol=searchSymbol) => {
-    // debugger
     // fetch to the backend using the searchSymbol, on a route to a controller that'll make the api requests, make use of env variables here
       fetch(`${process.env.REACT_APP_BACKEND_URL}/stocks/${symbol}`)
       .then( r => r.json())
@@ -132,7 +109,6 @@ function App() {
       fetch(`${process.env.REACT_APP_BACKEND_URL}/similarstock/${symbol}`)
       .then( r => r.json())
       .then( data => {
-        // console.log(data)
         dispatch(updateSimilarStock(data.similar))
         data.string &&
         (fetch(`${process.env.REACT_APP_BACKEND_URL}/batch/${data.string}`)
@@ -141,9 +117,6 @@ function App() {
         )) 
       })
       dispatch(updateSearch(''))
-
-      
-
   }
 
   const handleCardClick = () => {
@@ -167,7 +140,7 @@ function App() {
       exchange: `${stockInfo.exchange}`,
     }
 
-    fetch(`${process.env.REACT_APP_BACKEND_URL}/addtowatchlist/${user.watchlists[onLoadWatchlist].id}`, {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/addtowatchlist/${user.watchlists[user.loadwatchlist].id}`, {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(wishlistObj)
@@ -178,16 +151,13 @@ function App() {
       console.log(userRender)
       dispatch(updateUser(userRender))
 
-      fetch(`${process.env.REACT_APP_BACKEND_URL}/batch/${userRender.watchlists[onLoadWatchlist].arrayList.join(',')}`)
+      fetch(`${process.env.REACT_APP_BACKEND_URL}/batch/${userRender.watchlists[user.loadwatchlist].arrayList.join(',')}`)
       .then( r => r.json())
       .then( data => {
         console.log(data)
         dispatch(updateBatchWatchlist(data))
         
       })})
-
-    // console.log(wishlistObj)
-
 
   }
 

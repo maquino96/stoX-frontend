@@ -1,5 +1,12 @@
 import React from "react";
-import { Card, Icon, Dimmer, Loader, Segment, Grid } from "semantic-ui-react";
+import {
+  Card,
+  Icon,
+  Dimmer,
+  Loader,
+  Segment,
+  Grid
+} from "semantic-ui-react";
 import { useSelector } from "react-redux";
 
 const WatchlistCard = ({ stock }) => {
@@ -8,53 +15,40 @@ const WatchlistCard = ({ stock }) => {
 
   if (stockList) {
     return (
-      <div style={{ paddingLeft: "3em" }}>
+      <div style={{ paddingLeft: "3em", paddingTop: '10px' }}>
         <Card>
           <Card.Content>
-            <Grid textAlign="center">
-              <Grid.Row
-                style={{
-                  height: "1em",
-                  padding: "5px",
-                  paddingBottom: "5px",
-                  fontSize: "10px",
-                }}
-              >
-                <Grid.Column style={{ maxHeight: "10px", overflowY: "hide" }}>
-                  {stockList.quote.companyName}
-                </Grid.Column>
-              </Grid.Row>
+          <Grid textAlign='center'>
 
-              <Grid.Row style={{ paddingTop: "15px", paddingBottom: "5px" }}>
-                <Grid.Column width={4}>
-                  <Icon
-                    size="large"
-                    name={
-                      stockList.quote.change > 0 ? "caret up" : "caret down"
-                    }
-                    color={stockList.quote.change >= 0 ? "green" : "red"}
-                  />
-                </Grid.Column>
+          <Grid.Row style={{height: '1em', padding: '5px', paddingBottom: '5px', fontSize: '10px'}}>
+              <Grid.Column style={{ maxHeight:'10px', overflowY: 'hide' }}>
+              {stockList.quote.companyName}
+              </Grid.Column>
+            </Grid.Row>
 
-                <Grid.Column width={4}>
-                  <Card.Header>{stock}</Card.Header>
-                </Grid.Column>
+            <Grid.Row style={{paddingTop: '15px', paddingBottom: '5px'}}>
+            <Grid.Column width={4}>
+            <Icon
+                  size="large"
+                  name={stockList.quote.change > 0 ? "caret up" : "caret down"}
+                  color={stockList.quote.change >= 0 ? "green" : "red"}
+            />
+            </Grid.Column>
 
-                <Grid.Column width={4}>
-                  {stockList.quote.latestPrice}
-                </Grid.Column>
+            <Grid.Column width={4}>
+            <Card.Header>{stock}</Card.Header>  
+            </Grid.Column>
 
-                <Grid.Column width={4}>
-                  <Card.Header
-                    style={{
-                      color: stockList.quote.change >= 0 ? "green" : "red",
-                    }}
-                  >{`${(stockList.quote.changePercent * 100).toFixed(
-                    2
-                  )}%`}</Card.Header>
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
+            <Grid.Column width={4}>
+              {stockList.quote.latestPrice}
+            </Grid.Column>
+            
+            <Grid.Column width={4}>
+             <Card.Header style={{color: stockList.quote.change >= 0 ? "green" : "red"}}>{`${(stockList.quote.changePercent * 100).toFixed(2)}%`}</Card.Header>
+            </Grid.Column>
+            </Grid.Row>
+            
+          </Grid>
           </Card.Content>
         </Card>
       </div>

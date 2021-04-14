@@ -1,9 +1,32 @@
 import React from 'react'
 import { Header, Menu } from 'semantic-ui-react'
 import { useHistory } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { updateUser, updateBatchWatchlist } from './appSlice'
 
 const HeadNav = () => {
     const history = useHistory()
+    const dispatch = useDispatch()
+
+    const handleLogout = (e) => {
+        e.preventDefault()
+        const defaultUser = {
+          name: 'Guest',
+          id: 1,
+          loadwatchlist: 'Default',
+          watchlists: { Default: {id: 999,
+              arrayList: ['SPY', 'DIA']}
+          } 
+        }
+    
+        dispatch(updateUser( defaultUser))
+    
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/batch/${defaultUser.watchlists[defaultUser.loadwatchlist].arrayList.join(',')}`)
+              .then( r => r.json())
+              .then( data => {
+                dispatch(updateBatchWatchlist(data))
+              })
+      }
 
     const handleStoxClick = (e) => {
         e.preventDefault()
@@ -24,7 +47,7 @@ const HeadNav = () => {
                     <Menu.Menu position='right'>
                     <Menu.Item onClick={(e) => handleStoxClick(e)}>Home</Menu.Item> 
                     <Menu.Item onClick={(e)=>handleWatchlistCLick(e)}>Watchlists</Menu.Item>
-                    <Menu.Item>Logout</Menu.Item>
+                    <Menu.Item onClick={(e)=>handleLogout(e)}>Logout</Menu.Item>
                     </Menu.Menu>
                 </Menu>
             </Header>

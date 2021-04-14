@@ -1,10 +1,9 @@
 import {useState} from "react";
 import { Card, Container, Dimmer, Segment, Loader } from "semantic-ui-react";
-import { useDispatch, useSelector } from "react-redux";
-import { updateSearch } from "../appSlice";
+import { useSelector } from "react-redux";
+
 
 const StockCard = ({ stock, handleSearchRequest }) => {
-  const dispatch = useDispatch();
 
   const [symbol, setSymbol] = useState('')
 
