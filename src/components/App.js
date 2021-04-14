@@ -25,6 +25,7 @@ function App() {
   const user = useSelector( state => state.app.user )
   const searchSymbol = useSelector( state => state.app.searchSymbol)
   const stockInfo = useSelector( state => state.app.stockInfo )
+  console.log(user.loadwatchlist)
 
 
   useEffect(()=>{
@@ -32,12 +33,15 @@ function App() {
     // let date = new Date()
     // let currMins = date.getHours()*60 + date.getMinutes()
 
-
+    // console.log(user.loadwatchlist)
+    
+    user.watchlists[user.loadwatchlist] && (
     fetch(`${process.env.REACT_APP_BACKEND_URL}/batch/${user.watchlists[user.loadwatchlist].arrayList.join(',')}`)
     .then( r => r.json())
     .then( data => {
       // console.log(data)
       dispatch(updateBatchWatchlist(data))})
+    )
 
     // const id = setInterval( () => {
 

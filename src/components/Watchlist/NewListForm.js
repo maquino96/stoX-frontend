@@ -1,60 +1,16 @@
-import { useState } from "react";
-import { Form, Checkbox } from "semantic-ui-react";
-import { useSelector, useDispatch } from "react-redux";
-import { updateUser } from "../appSlice";
+import React from "react";
+import { Form, Checkbox, Header } from "semantic-ui-react";
 
-const NewListForm = () => {
-  const dispatch = useDispatch();
-  const user = useSelector((state) => state.app.user);
-
-  const [formData, setFormData] = useState({
-    user_id: user.id,
-    name: "",
-    public: true,
-    description: "",
-  });
-
-  const updateForm = (e) => {
-    const key = e.target.name;
-    const value = e.target.value;
-    setFormData({ ...formData, [key]: value });
-  };
-
-  const handleCheck = (e) => {
-    e.preventDefault();
-    setFormData({ ...formData, public: !formData.public });
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(formData);
-
-    fetch(`${process.env.REACT_APP_BACKEND_URL}/newlist/`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    })
-      .then((r) => r.json())
-      .then((userRender) => {
-        dispatch(updateUser(userRender));
-      });
-
-    setFormData({
-      user_id: user.id,
-      name: "",
-      public: true,
-      description: "",
-    });
-  };
+const NewListForm = ({edit, setEdit, formData, setFormData, updateForm, handleCheck, handleSubmit}) => {
 
   return (
     <div style={{ padding: "1em" }}>
       <Form onSubmit={(e) => handleSubmit(e)}>
+        <Header as='h3' style={{ fontFamily: 'Futura,Trebuchet MS,Arial,sans-serif', fontWeight: 700}}> NEW LIST FORM </Header>
         <Form.Group>
           <Form.Input
             width={14}
             fluid
-            label="List Name"
             name="name"
             placeholder="List Name"
             value={formData.name}
@@ -64,7 +20,7 @@ const NewListForm = () => {
           <Checkbox
             style={{
               height: "25px",
-              marginTop: "32px",
+              marginTop: "9px",
               marginLeft: "1em",
               fontSize: "16px",
             }}
@@ -76,7 +32,6 @@ const NewListForm = () => {
         </Form.Group>
 
         <Form.TextArea
-          label="About"
           name="description"
           placeholder="List Description"
           value={formData.description}
