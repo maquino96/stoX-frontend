@@ -17,3 +17,11 @@ code {
   margin-bottom: 1em;
   text-align: center;
 }
+
+.ui.container::-webkit-scrollbar {
+  display: none;
+}
+
+.ui.cards::-webkit-scrollbar {
+  display: none;
+}

@@ -26,6 +26,7 @@ const HeadNav = () => {
               .then( data => {
                 dispatch(updateBatchWatchlist(data))
               })
+        history.push('/')
       }
 
     const handleStoxClick = (e) => {
@@ -41,7 +42,7 @@ const HeadNav = () => {
 
     return (
         <div>
-            <Header as='h1' style={{padding: '1em', backgroundColor: '#34526f'}}>
+            <Header as='h1' style={{padding: '1em', paddingBottom: '.5em', backgroundColor: '#34526f'}}>
                 <Menu  pointing secondary style={{padding: '0em', fontSize: '.6em'}}>
                 <Header.Content onClick={(e) => handleStoxClick(e)} style={{fontSize: '3em', fontFamily: 'Futura,Trebuchet MS,Arial,sans-serif', fontWeight: 700}}> StoX </Header.Content>
                     <Menu.Menu position='right'>

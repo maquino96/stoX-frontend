@@ -13,7 +13,6 @@ const Watchlist = () => {
   const user = useSelector((state) => state.app.user);
   const [edit, setEdit ] = useState(false)
   const [listClicked, setListClicked] = useState('')
-  console.log(listClicked)
 
   const [formData, setFormData] = useState({
     user_id: user.id,
@@ -118,7 +117,7 @@ const Watchlist = () => {
       body: JSON.stringify(formData),
     })
       .then((r) => r.json())
-      .then(userRender => { console.log(userRender)
+      .then(userRender => { 
         dispatch(updateUser(userRender))  
       })
 

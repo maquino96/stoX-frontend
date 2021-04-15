@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import { Header, Card, Button, Container } from "semantic-ui-react";
 import { useSelector, useDispatch } from "react-redux";
 import { updateUser } from "../appSlice";
@@ -6,6 +6,7 @@ import { updateUser } from "../appSlice";
 const WatchCard = ({ listName, stocksArray, listID, edit, setEdit, handleEditForm }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.app.user);
+  const [hover, setHover] = useState(true)
 
   const handleListDelete = (event) => {
     event.preventDefault();
@@ -49,7 +50,7 @@ const WatchCard = ({ listName, stocksArray, listID, edit, setEdit, handleEditFor
     ));
     return (
       <Card style={{ height: "350px", width: "300px", borderStyle: listName === user.loadwatchlist && 'solid' }}>
-        <Header as="h1" onClick={(e)=>handleEdit(e) } style={{ marginTop: ".25em", marginBottom: "0"}}>
+        <Header as="h1" onClick={(e)=>handleEdit(e) } style={{ marginTop: ".25em", marginBottom: "0" }}>
           {listName}
         </Header>
         <Container

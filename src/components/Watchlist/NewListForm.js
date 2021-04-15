@@ -26,6 +26,7 @@ const NewListForm = ({edit, setEdit, formData, setFormData, updateForm, handleCh
             }}
             label="Private List"
             name="public"
+            checked={!formData.public}
             value={formData.public}
             onChange={handleCheck}
           />
