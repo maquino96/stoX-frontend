@@ -1,15 +1,21 @@
 import React from 'react'
 import { Header, Menu } from 'semantic-ui-react'
 import { useHistory } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { updateUser, updateBatchWatchlist } from './appSlice'
 
 const HeadNav = ({handleWatchlistClick}) => {
     const history = useHistory()
     const dispatch = useDispatch()
+    const user = useSelector(state => state.app.user)
 
     const handleLogout = (e) => {
         e.preventDefault()
+
+        if (user.name === 'Guest') {
+
+            alert('No user found. Please login to continue.')
+        } else {
         const defaultUser = {
           name: 'Guest',
           id: 1,
@@ -28,6 +34,7 @@ const HeadNav = ({handleWatchlistClick}) => {
               })
         history.push('/')
       }
+    }
 
     const handleStoxClick = (e) => {
         e.preventDefault()

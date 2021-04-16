@@ -8,7 +8,6 @@ const WatchCard = ({ listName, stocksArray, listID, edit, setEdit, handleEditFor
   const dispatch = useDispatch();
   const user = useSelector((state) => state.app.user);
   const [hover, setHover] = useState(false)
-  console.log(hover)
   
 
   const handleListDelete = (event) => {

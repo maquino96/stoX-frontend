@@ -34,7 +34,7 @@ const WatchlistCard = ({ stock }) => {
 
   if (stockList) {
     return (
-      <Card.Group style={{ paddingLeft: "2.5em", paddingTop: '10px' }}>
+      <Card.Group style={{ paddingLeft: "2.5em", paddingTop: '0px', marginTop: '0px' }}>
         <Card style={{marginRight: '0px'}}>
           <Card.Content>
           <Grid textAlign='center'>
@@ -70,8 +70,10 @@ const WatchlistCard = ({ stock }) => {
           </Grid>
           </Card.Content>
         </Card>
+        { user.name !== 'Guest' &&  
         <Icon onClick={(e)=>handleWidgetDelete(e)} onMouseEnter={(e)=>setHover(true)} onMouseLeave={()=>setHover(false)} name='close' size='large' style={{marginTop: '12px'}} color={hover && 'red'}/>
-      </Card.Group>
+        }
+        </Card.Group>
     );
   } else {
     return (

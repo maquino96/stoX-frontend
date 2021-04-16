@@ -15,10 +15,11 @@ const PublicCard = ({listObj, setClickedObj, clickedObj}) => {
 
         // I made an explicit choice to optimistically render. Upon scaling up or an increase in the amount of 
         // watchlists there maybe a lag in rendering of likes if it was pessimistically rendered. 
-        setUpvotes(upvotes+1)
+        
 
         if (user.name === 'Guest'){ alert('Please sign in to upvote list')}
         else {
+        setUpvotes(upvotes+1)
         fetch(`${process.env.REACT_APP_BACKEND_URL}/watchlist/upvote/${listObj.id}`, {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
