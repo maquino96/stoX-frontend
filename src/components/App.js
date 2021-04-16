@@ -20,12 +20,15 @@ import {
 import Search from "./Search.js";
 import HeadNav from "./HeadNav";
 import Watchlist from "./Watchlist";
+import {useHistory} from 'react-router-dom'
+
 function App() {
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.app.user);
   const searchSymbol = useSelector((state) => state.app.searchSymbol);
   const stockInfo = useSelector((state) => state.app.stockInfo);
+  const history = useHistory()
 
   useEffect(() => {
     // let date = new Date()
@@ -169,14 +172,32 @@ function App() {
       });
   };
 
+  const handleWatchlistClick = (e) => {
+    e.preventDefault()
+    
+    if(user.name === 'Guest') {
+
+        alert('Please sign in to view your watchlists')
+
+    } else {
+    history.push('/watchlist')
+    }
+
+  }
+
   return (
     <div className="App">
-      <HeadNav />
+      <HeadNav
+      handleWatchlistClick={handleWatchlistClick}
+      />
       <Search handleSearchRequest={handleSearchRequest} />
       <Switch>
         <Route exact path="/">
           <Container>
-            <Dashboard handleLogin={handleLogin} />
+            <Dashboard 
+            handleLogin={handleLogin} 
+            handleWatchlistClick={handleWatchlistClick}
+            />
           </Container>
         </Route>
         <Route exact path="/stockdetail">

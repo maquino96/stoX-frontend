@@ -1,12 +1,15 @@
 import { useState } from "react";
-import { Header, Card, Button, Container } from "semantic-ui-react";
+import { Header, Card, Button, Container, Popup } from "semantic-ui-react";
 import { useSelector, useDispatch } from "react-redux";
 import { updateUser } from "../appSlice";
+import StockCard from './StockCard'
 
 const WatchCard = ({ listName, stocksArray, listID, edit, setEdit, handleEditForm }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.app.user);
-  const [hover, setHover] = useState(true)
+  const [hover, setHover] = useState(false)
+  console.log(hover)
+  
 
   const handleListDelete = (event) => {
     event.preventDefault();
@@ -45,20 +48,34 @@ const WatchCard = ({ listName, stocksArray, listID, edit, setEdit, handleEditFor
   }
 
   if (stocksArray) {
-    const stockComponents = stocksArray.map((stock) => (
-      <Card style={{ width: "90%", marginLeft: "7px" }}>{stock}</Card>
+    const stockComponents = stocksArray.map((symbol) => ( <StockCard stock={symbol} listName={listName}/>
     ));
     return (
       <Card style={{ height: "350px", width: "300px", borderStyle: listName === user.loadwatchlist && 'solid' }}>
-        <Header as="h1" onClick={(e)=>handleEdit(e) } style={{ marginTop: ".25em", marginBottom: "0" }}>
+        <Popup 
+        wide
+        trigger={
+        <Header 
+          as="h1" 
+          onMouseEnter={(e)=>setHover(true)} 
+          onMouseLeave={()=>setHover(false)}
+          onDoubleClick={(e)=>handleEdit(e) } 
+          style={{ marginTop: ".25em", 
+          marginBottom: "0",
+          fontSize: hover ? '32px' : '22px'
+           }}>
           {listName}
-        </Header>
+        </Header>} >
+        <Popup.Content style={{textAlign: 'center'}}>
+          {`Description: ${user.watchlists[listName].description}`}
+        </Popup.Content>
+          </Popup>
         <Container
           style={{
             padding: ".5em",
             height: "80%",
             width: "90%",
-            marginTop: "1em",
+            marginTop: ".75em",
             marginBottom: "9px",
             marginLeft: "15px",
             overflowY: "scroll",

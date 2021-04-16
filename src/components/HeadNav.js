@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { updateUser, updateBatchWatchlist } from './appSlice'
 
-const HeadNav = () => {
+const HeadNav = ({handleWatchlistClick}) => {
     const history = useHistory()
     const dispatch = useDispatch()
 
@@ -35,7 +35,7 @@ const HeadNav = () => {
 
     }
 
-    const handleWatchlistCLick = (e) => {
+    const handlePubliclistCLick = (e) => {
         e.preventDefault()
         history.push('/publicwatchlists')
     }
@@ -47,7 +47,8 @@ const HeadNav = () => {
                 <Header.Content onClick={(e) => handleStoxClick(e)} style={{fontSize: '3em', fontFamily: 'Futura,Trebuchet MS,Arial,sans-serif', fontWeight: 700}}> StoX </Header.Content>
                     <Menu.Menu position='right'>
                     <Menu.Item onClick={(e) => handleStoxClick(e)}>Home</Menu.Item> 
-                    <Menu.Item onClick={(e)=>handleWatchlistCLick(e)}>Watchlists</Menu.Item>
+                    <Menu.Item onClick={(e)=>handleWatchlistClick(e)}> My Lists </Menu.Item>
+                    <Menu.Item onClick={(e)=>handlePubliclistCLick(e)}>Forum</Menu.Item>
                     <Menu.Item onClick={(e)=>handleLogout(e)}>Logout</Menu.Item>
                     </Menu.Menu>
                 </Menu>

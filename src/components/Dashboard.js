@@ -4,7 +4,7 @@ import WatchlistWidget from "./Dashboard/WatchlistWidget";
 // import {useHistory} from "react-router-dom"
 import LoginContainer from './LoginContainer'
 
-const Dashboard = ({ handleSearchRequest, handleLogin }) => {
+const Dashboard = ({ handleSearchRequest, handleLogin, handleWatchlistClick }) => {
   // let history = useHistory();
 
   return (
@@ -22,7 +22,8 @@ const Dashboard = ({ handleSearchRequest, handleLogin }) => {
               <LoginContainer/>
           </Grid.Row>
           <Grid.Row textAlign='right'>
-              <WatchlistWidget/>
+              <WatchlistWidget
+              handleWatchlistClick={handleWatchlistClick}/>
           </Grid.Row>
         </Grid.Column>
       </Grid>

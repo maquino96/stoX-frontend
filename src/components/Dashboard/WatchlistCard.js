@@ -1,4 +1,4 @@
-import React from "react";
+import {useState} from "react";
 import {
   Card,
   Icon,
@@ -7,16 +7,35 @@ import {
   Segment,
   Grid
 } from "semantic-ui-react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { updateUser } from '../appSlice'
 
 const WatchlistCard = ({ stock }) => {
+  const [hover, setHover] = useState(false)
+  const dispatch = useDispatch()
+  const user = useSelector(state => state.app.user)
   const stockList = useSelector((state) => state.app.batchWatchlist[stock]);
   //   console.log(stock)
 
+  const handleWidgetDelete = (event) => {
+    event.preventDefault()
+    fetch(
+      `${process.env.REACT_APP_BACKEND_URL}/watchstock/${user.watchlists[user.loadwatchlist].id}/${stock}`,
+      {
+        method: "DELETE",
+      }
+    )
+      .then((r) => r.json())
+      .then((renderUser) => {
+        dispatch(updateUser(renderUser));
+      });
+
+  }
+
   if (stockList) {
     return (
-      <div style={{ paddingLeft: "3em", paddingTop: '10px' }}>
-        <Card>
+      <Card.Group style={{ paddingLeft: "2.5em", paddingTop: '10px' }}>
+        <Card style={{marginRight: '0px'}}>
           <Card.Content>
           <Grid textAlign='center'>
 
@@ -51,7 +70,8 @@ const WatchlistCard = ({ stock }) => {
           </Grid>
           </Card.Content>
         </Card>
-      </div>
+        <Icon onClick={(e)=>handleWidgetDelete(e)} onMouseEnter={(e)=>setHover(true)} onMouseLeave={()=>setHover(false)} name='close' size='large' style={{marginTop: '12px'}} color={hover && 'red'}/>
+      </Card.Group>
     );
   } else {
     return (

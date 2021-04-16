@@ -10,13 +10,17 @@ import {
   Loader,
   Segment
 } from "semantic-ui-react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import StockChart from "./StockChart";
+import {updateUser} from '../appSlice'
 
 const StockInfo = ({ addToWishlist }) => {
   const stockInfo = useSelector((state) => state.app.stockInfo);
   const keyData = useSelector((state) => state.app.keyData);
   const user = useSelector( state => state.app.user)
+  const dispatch = useDispatch()
+
+
 
   const handleAddClick = (event) => {
     event.preventDefault();
@@ -26,6 +30,22 @@ const StockInfo = ({ addToWishlist }) => {
       addToWishlist()
     }
   };
+
+  const handleRemoveClick = (event) => {
+    event.preventDefault();
+
+    fetch(
+      `${process.env.REACT_APP_BACKEND_URL}/watchstock/${user.watchlists[user.loadwatchlist].id}/${stockInfo.symbol}`,
+      {
+        method: "DELETE",
+      }
+    )
+      .then((r) => r.json())
+      .then((renderUser) => {
+        dispatch(updateUser(renderUser));
+      });
+    
+  }
 
   
 
@@ -39,9 +59,11 @@ const StockInfo = ({ addToWishlist }) => {
 
           <Grid.Row>
             <Container>
-              <Button onClick={(e) => handleAddClick(e)}>
-                Add to Watchlist
-              </Button>
+              {!user.watchlists[user.loadwatchlist].arrayList.includes(stockInfo.symbol) ? 
+              <Button onClick={(e) => handleAddClick(e)}> Add to Watchlist</Button>
+              :
+              <Button basic color='red' onClick={(e)=>handleRemoveClick(e)}> Remove from Watchlist</Button>
+              }
             </Container>
           </Grid.Row>
 
