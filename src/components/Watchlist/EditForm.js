@@ -27,7 +27,7 @@ const EditForm = ({edit, setEdit, formData, setFormData, updateForm, handleCheck
                 checked={!formData.public}
                 label="Private List"
                 name="public"
-                value={formData.public}
+                // value={formData.public}
                 onChange={handleCheck}
               />
             </Form.Group>

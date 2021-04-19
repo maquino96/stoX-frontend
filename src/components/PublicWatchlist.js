@@ -12,7 +12,7 @@ const PublicWatchlist = () => {
   const publicList = useSelector((state) => state.app.publicList);
 
   // console.log( publicList[0].createdAt)
-  console.log(publicList);
+  // console.log(publicList);
 
   const cardComponents = publicList
     .slice()

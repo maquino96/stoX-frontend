@@ -47,7 +47,7 @@ const WatchCard = ({ listName, stocksArray, listID, edit, setEdit, handleEditFor
   }
 
   if (stocksArray) {
-    const stockComponents = stocksArray.map((symbol) => ( <StockCard stock={symbol} listName={listName}/>
+    const stockComponents = stocksArray.map((symbol) => ( <StockCard key={symbol} stock={symbol} listName={listName}/>
     ));
     return (
       <Card style={{ height: "350px", width: "300px", borderStyle: listName === user.loadwatchlist && 'solid' }}>
