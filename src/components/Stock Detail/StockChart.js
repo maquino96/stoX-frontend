@@ -4,6 +4,7 @@ import Plot from "react-plotly.js";
 import { useSelector } from "react-redux";
 
 const StockChart = () => {
+
   const chartData = useSelector((state) => state.app.chartData);
   const stockInfo = useSelector((state) => state.app.stockInfo);
 
@@ -31,6 +32,8 @@ const StockChart = () => {
   if (chartData.minutesX) {
     return (
       <Container style={{paddingTop: '1em'}}>
+
+
         <Plot
           data={[ Price, 
             Volume
@@ -53,7 +56,7 @@ const StockChart = () => {
               autorange: true,
               title: 'Price',
               range: [
-                (Math.min(...chartData.averageY) * 0.98),
+                (Math.min(...chartData.averageY) * 0.975),
                 (Math.max(...chartData.averageY) * 1.025),
               ],
               type: "linear"
@@ -69,6 +72,7 @@ const StockChart = () => {
             }
           }}
         />
+
       </Container>
     );
   } else {

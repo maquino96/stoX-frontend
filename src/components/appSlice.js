@@ -19,7 +19,8 @@ export const slice = createSlice({
         similarStock: [],
         batchSimInfo: {},
         chartData: {},
-        publicList: []
+        publicList: [],
+        treemap: {}
     },
     reducers: {
         updateUser: (state,action) => {
@@ -48,7 +49,10 @@ export const slice = createSlice({
         },
         updatePublicList: (state, action) => { 
             state.publicList = action.payload
-        }
+        },
+        updateTreemap: (state, action) => { 
+            state.treemap = action.payload
+        },
     }
 })
 
@@ -60,7 +64,8 @@ const { updateUser,
         updateBatchSimInfo, 
         updateBatchWatchlist,
         updateChartData,
-        updatePublicList} = slice.actions
+        updatePublicList,
+        updateTreemap} = slice.actions
 
 export {updateUser, 
         updateSearch, 
@@ -70,5 +75,6 @@ export {updateUser,
         updateBatchSimInfo, 
         updateBatchWatchlist,
         updateChartData,
-        updatePublicList}
+        updatePublicList,
+        updateTreemap}
 export default slice.reducer

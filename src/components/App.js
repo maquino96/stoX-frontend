@@ -15,7 +15,8 @@ import {
   updateSearch,
   updateBatchWatchlist,
   updateChartData,
-  updatePublicList
+  updatePublicList,
+  updateTreemap
 } from "./appSlice";
 import Search from "./Search.js";
 import HeadNav from "./HeadNav";
@@ -35,6 +36,12 @@ function App() {
     // let currMins = date.getHours()*60 + date.getMinutes()
 
     // console.log(user.loadwatchlist)
+
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/treemapdata`)
+      .then( r => r.json())
+      .then( data => {dispatch(updateTreemap(data))
+        console.log(data)
+      })
 
 
     fetch(`${process.env.REACT_APP_BACKEND_URL}/watchlists/all`)
