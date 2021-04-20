@@ -2,7 +2,7 @@ import { useState } from "react";
 import LoginForm from "./Login/LoginForm";
 import SignupForm from "./Login/SignupForm";
 
-const LoginContainer = () => {
+const LoginContainer = ({setOpen}) => {
   const [formData, setFormData] = useState({
     name: "",
     password: "",
@@ -29,6 +29,7 @@ const LoginContainer = () => {
         formData={formData}
         setFormData={setFormData}
         updateForm={updateForm}
+        setOpen={setOpen}
       />
 
       :

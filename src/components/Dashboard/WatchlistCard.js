@@ -34,7 +34,7 @@ const WatchlistCard = ({ stock }) => {
 
   if (stockList) {
     return (
-      <Card.Group style={{ paddingLeft: "2.5em", paddingTop: '0px', marginTop: '0px' }}>
+      <Card.Group style={{ paddingLeft: user.name==='Guest' ? '4em' : "3.5em", paddingTop: '0px', marginTop: '0px' }}>
         <Card style={{marginRight: '0px'}}>
           <Card.Content>
           <Grid textAlign='center'>

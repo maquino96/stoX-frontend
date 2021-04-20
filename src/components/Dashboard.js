@@ -2,8 +2,7 @@ import React from "react";
 import { Grid, Container} from "semantic-ui-react";
 import SectorTreemap from "./Dashboard/SectorTreemap";
 import WatchlistWidget from "./Dashboard/WatchlistWidget";
-// import {useHistory} from "react-router-dom"
-import LoginContainer from './LoginContainer'
+import News from './Dashboard/News'
 
 const Dashboard = ({ handleSearchRequest, handleLogin, handleWatchlistClick }) => {
   // let history = useHistory();
@@ -12,21 +11,26 @@ const Dashboard = ({ handleSearchRequest, handleLogin, handleWatchlistClick }) =
     <div>
       <Container>
       <Grid>
+
+        <Grid.Row>
+            <News />
+        </Grid.Row>
+
+
+
+        <Grid.Row>
         <Grid.Column width={10}>
-                <Grid.Row>News</Grid.Row>
                 <Grid.Row><SectorTreemap/></Grid.Row> 
         </Grid.Column>
 
         <Grid.Column width={6}>
-          <Grid.Row>
-              {/* <UserInfo handleLogin={handleLogin}/> */}
-              <LoginContainer/>
-          </Grid.Row>
           <Grid.Row textAlign='right'>
               <WatchlistWidget
               handleWatchlistClick={handleWatchlistClick}/>
           </Grid.Row>
         </Grid.Column>
+        </Grid.Row>
+
       </Grid>
       </Container>
     </div>

@@ -26,7 +26,7 @@ const Search = ({handleSearchRequest}) => {
         <Form style={{padding: '0em'}} onSubmit={handleSearch} width={4}> 
           <Form.Input
             placeholder='Input stock symbol' 
-            label='Stock Search'
+            label='StoX Search'
             value={searchSymbol}
             onChange={(e)=>dispatch(updateSearch(e.target.value))}
             />

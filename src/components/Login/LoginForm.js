@@ -9,6 +9,7 @@ const LoginForm = ({
   formData,
   setFormData,
   updateForm,
+  setOpen
 }) => {
   const user = useSelector((state) => state.app.user);
   const dispatch = useDispatch();
@@ -34,41 +35,42 @@ const LoginForm = ({
               dispatch(updateBatchWatchlist(data));
             });
           dispatch(updateUser(loginUser));
-          setFormData({ name: "", password: "" });
+          setFormData({ name: "", password: "" })
+          setOpen(false)
         } else {
           alert("Username or Password is incorrect");
         }
       });
   };
 
-  const handleLogout = (e) => {
-    e.preventDefault();
-    const defaultUser = {
-      name: "Guest",
-      id: 1,
-      loadwatchlist: "Default",
-      watchlists: { Default: { id: 999, arrayList: ["SPY", "DIA"] } },
-    };
+  // const handleLogout = (e) => {
+  //   e.preventDefault();
+  //   const defaultUser = {
+  //     name: "Guest",
+  //     id: 1,
+  //     loadwatchlist: "Default",
+  //     watchlists: { Default: { id: 999, arrayList: ["SPY", "DIA"] } },
+  //   };
 
-    dispatch(updateUser(defaultUser));
+  //   dispatch(updateUser(defaultUser));
 
-    fetch(
-      `${process.env.REACT_APP_BACKEND_URL}/batch/${defaultUser.watchlists[
-        user.loadwatchlist
-      ].arrayList.join(",")}`
-    )
-      .then((r) => r.json())
-      .then((data) => {
-        console.log(data);
-        dispatch(updateBatchWatchlist(data));
-      });
-  };
+  //   fetch(
+  //     `${process.env.REACT_APP_BACKEND_URL}/batch/${defaultUser.watchlists[
+  //       user.loadwatchlist
+  //     ].arrayList.join(",")}`
+  //   )
+  //     .then((r) => r.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       dispatch(updateBatchWatchlist(data));
+  //     });
+  // };
 
   return (
     <div style={{ padding: "1em" }}>
       <Form onSubmit={handleLoginSubmit} id="login-form" className="hidden">
         <Container>
-          {user.name === "Guest" ? (
+          {/* {user.name === "Guest" ? ( */}
             <>
               <h2>Login</h2>
               <Form.Group widths="equal">
@@ -97,9 +99,9 @@ const LoginForm = ({
                 </Button>
               </>
             </>
-          ) : (
-            <Button onClick={(e) => handleLogout(e)}>Logout</Button>
-          )}
+          {/* ) : ( */}
+            {/* <Button onClick={(e) => handleLogout(e)}>Logout</Button> */}
+          {/* )} */}
         </Container>
       </Form>
     </div>

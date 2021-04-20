@@ -1,13 +1,15 @@
-import React from 'react'
-import { Header, Menu } from 'semantic-ui-react'
+import {useState} from 'react'
+import { Header, Menu, Modal } from 'semantic-ui-react'
 import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateUser, updateBatchWatchlist } from './appSlice'
+import LoginContainer from './LoginContainer'
 
 const HeadNav = ({handleWatchlistClick}) => {
     const history = useHistory()
     const dispatch = useDispatch()
     const user = useSelector(state => state.app.user)
+    const [open, setOpen] = useState(false)
 
     const handleLogout = (e) => {
         e.preventDefault()
@@ -50,13 +52,24 @@ const HeadNav = ({handleWatchlistClick}) => {
     return (
         <div>
             <Header as='h1' style={{padding: '1em', paddingBottom: '.5em', backgroundColor: '#34526f'}}>
+            <Modal
+            centered={false}
+            open={open}
+            onClose={() => setOpen(false)}
+            // onOpen={() => setOpen(true)}
+            // trigger={<Menu.Item>Logout</Menu.Item>}
+            >
+                <LoginContainer setOpen={setOpen}/>
+            </Modal>
                 <Menu  pointing secondary style={{padding: '0em', fontSize: '.6em'}}>
                 <Header.Content onClick={(e) => handleStoxClick(e)} style={{fontSize: '3em', fontFamily: 'Futura,Trebuchet MS,Arial,sans-serif', fontWeight: 700}}> StoX </Header.Content>
                     <Menu.Menu position='right'>
                     <Menu.Item onClick={(e) => handleStoxClick(e)}>Home</Menu.Item> 
                     <Menu.Item onClick={(e)=>handleWatchlistClick(e)}> My Lists </Menu.Item>
                     <Menu.Item onClick={(e)=>handlePubliclistCLick(e)}>Forum</Menu.Item>
-                    <Menu.Item onClick={(e)=>handleLogout(e)}>Logout</Menu.Item>
+                    { user.name === 'Guest' ? <Menu.Item onClick={()=>setOpen(true)}>Login</Menu.Item> : 
+                    <Menu.Item onClick={(e)=>handleLogout(e)}>Logout</Menu.Item> }
+                    
                     </Menu.Menu>
                 </Menu>
             </Header>

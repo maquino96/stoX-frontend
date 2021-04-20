@@ -3,6 +3,7 @@ import FusionCharts from "fusioncharts";
 import TreeMap from "fusioncharts/fusioncharts.treemap";
 import ReactFusioncharts from "react-fusioncharts";
 import { useSelector } from "react-redux";
+import {Container} from 'semantic-ui-react'
 
 // Resolves charts dependancy
 TreeMap(FusionCharts);
@@ -49,15 +50,15 @@ const SectorTreemap = () => {
   };
 
   return (
-    <div>
+    <Container style={{height: '25em'}}>
       <ReactFusioncharts
         type="treemap"
         width="100%"
-        height="150%"
+        height="100%"
         dataFormat="JSON"
         dataSource={dataSource}
       />
-    </div>
+    </Container>
   );
 };
 

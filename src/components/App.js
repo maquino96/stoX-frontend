@@ -16,7 +16,8 @@ import {
   updateBatchWatchlist,
   updateChartData,
   updatePublicList,
-  updateTreemap
+  updateTreemap,
+  updateNews
 } from "./appSlice";
 import Search from "./Search.js";
 import HeadNav from "./HeadNav";
@@ -40,16 +41,21 @@ function App() {
     fetch(`${process.env.REACT_APP_BACKEND_URL}/treemapdata`)
       .then( r => r.json())
       .then( data => {dispatch(updateTreemap(data))
-        console.log(data)
       })
-
 
     fetch(`${process.env.REACT_APP_BACKEND_URL}/watchlists/all`)
       .then( r => r.json())
       .then( publicList => dispatch(updatePublicList(publicList)))
 
-    fetch(`${process.env.REACT_APP_BACKEND_URL}/batch/${user.watchlists[user.loadwatchlist].arrayList.join(",")}`
-    )
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/news/${user.watchlists[user.loadwatchlist].arrayList.join(",")}`)
+      .then((r) => r.json())
+      .then((news) => {
+        dispatch(updateNews(news));
+      });
+
+      
+
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/batch/${user.watchlists[user.loadwatchlist].arrayList.join(",")}`)
       .then((r) => r.json())
       .then((data) => {
         // console.log(data)
