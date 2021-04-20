@@ -112,33 +112,49 @@ function App() {
     // fetch to the backend using the searchSymbol, on a route to a controller that'll make the api requests, make use of env variables here
     fetch(`${process.env.REACT_APP_BACKEND_URL}/stocks/${symbol}`)
       .then((r) => r.json())
-      .then((data) => {
-        dispatch(updateStockInfo(data));
+      .then((data) => { 
+        // console.log(typeof data, data)
+        if (data.symbol ){
+        dispatch(updateStockInfo(data)) 
+
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/stockdata/${symbol}`)
+        .then((r) => r.json())
+        .then((data) => {
+          dispatch(updateKeyData(data));
+        });
+  
+      fetch(`${process.env.REACT_APP_BACKEND_URL}/chartdata/${symbol}`)
+        .then((r) => r.json())
+        .then((data) => {
+          dispatch(updateChartData(data));
+        });
+  
+      fetch(`${process.env.REACT_APP_BACKEND_URL}/similarstock/${symbol}`)
+        .then((r) => r.json())
+        .then((data) => {
+          dispatch(updateSimilarStock(data.similar));
+          data.string &&
+            fetch(`${process.env.REACT_APP_BACKEND_URL}/batch/${data.string}`)
+              .then((r) => r.json())
+              .then((data) => {
+                dispatch(updateBatchSimInfo(data));
+              });
+        });
+
+        } else { 
+          history.push('/')
+          fetch(`${process.env.REACT_APP_BACKEND_URL}/alt/${symbol}`)
+          .then((r) => r.json())
+          .then((data) => { 
+            // console.log(data)
+            alert(`Please try one of the followings symbols: ${data}`)
+
+          })
+
+           }
       });
 
-    fetch(`${process.env.REACT_APP_BACKEND_URL}/stockdata/${symbol}`)
-      .then((r) => r.json())
-      .then((data) => {
-        dispatch(updateKeyData(data));
-      });
 
-    fetch(`${process.env.REACT_APP_BACKEND_URL}/chartdata/${symbol}`)
-      .then((r) => r.json())
-      .then((data) => {
-        dispatch(updateChartData(data));
-      });
-
-    fetch(`${process.env.REACT_APP_BACKEND_URL}/similarstock/${symbol}`)
-      .then((r) => r.json())
-      .then((data) => {
-        dispatch(updateSimilarStock(data.similar));
-        data.string &&
-          fetch(`${process.env.REACT_APP_BACKEND_URL}/batch/${data.string}`)
-            .then((r) => r.json())
-            .then((data) => {
-              dispatch(updateBatchSimInfo(data));
-            });
-      });
     dispatch(updateSearch(""));
   };
 

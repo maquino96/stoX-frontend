@@ -1,20 +1,25 @@
 import { useState } from "react";
-import { Container, Grid, Card, Segment, Header } from "semantic-ui-react";
+import { Checkbox, Search, Container, Grid, Card, Segment, Header } from "semantic-ui-react";
 import { useSelector } from "react-redux";
 import PublicCard from "./PublicWatchlist/PublicCard";
 // import { useHistory } from "react-router-dom"
 
 const PublicWatchlist = () => {
   // let history = useHistory();
-
+  const [searchTerm, setSearchTerm] = useState('')
   const [clickedObj, setClickedObj] = useState(null);
+  const [sort, setSort] = useState(true)
+  console.log(sort)
 
   const publicList = useSelector((state) => state.app.publicList);
 
   // console.log( publicList[0].createdAt)
   // console.log(publicList);
 
-  const cardComponents = publicList
+  const filteredArray = publicList.filter( list => list.name.toLowerCase().includes(searchTerm.toLowerCase()))
+  // console.log(filteredArray)
+
+  const byMostRecent = filteredArray
     .slice()
     .sort((a, b) => b.createdAt - a.createdAt)
     .map((list) => (
@@ -26,6 +31,19 @@ const PublicWatchlist = () => {
       />
     ));
 
+  const byMostUpvotes = filteredArray
+    .slice()
+    .sort((a, b) => b.upvotes - a.upvotes)
+    .map((list) => (
+      <PublicCard
+        clickedObj={clickedObj}
+        setClickedObj={setClickedObj}
+        key={list.id}
+        listObj={list}
+      />
+    ));
+
+
   return (
     <div style={{ padding: "1em", maxHeight: "50em" }}>
       <Container style={{}}>
@@ -35,7 +53,7 @@ const PublicWatchlist = () => {
               itemsPerRow={2}
               style={{ overflowY: "scroll", maxHeight: "53.5em"}}
             >
-              {cardComponents}
+              {sort ?  byMostRecent : byMostUpvotes }
             </Card.Group>
           </Grid.Column>
           <Grid.Column width={5} style={{paddingTop: '.5em'}}>
@@ -49,7 +67,11 @@ const PublicWatchlist = () => {
                   borderColor: "black",
                 }}
               >
-                Search & Controls
+                <Search
+                  showNoResults={false}
+                  value={searchTerm}
+                  onSearchChange={(e)=>setSearchTerm(e.target.value)}/>
+                  <div><label> Most Recent </label><Checkbox toggle onChange={()=>setSort(!sort) } style={{paddingTop: '1em', marginLeft: '1em', marginRight: '1em'}}/> <label> Most Upvotes </label> </div>
               </Segment>
 
               {clickedObj ? (

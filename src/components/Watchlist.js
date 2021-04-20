@@ -127,9 +127,9 @@ const Watchlist = () => {
 
   return (
     <Container>
-      Personal Watchlists TEST
+      <h1 style={{paddingTop: '.5em'}}>Personal Watchlists</h1>
       <Container
-        style={{ overflowY: "scroll", maxHeight: "29em", padding: "2em" }}
+        style={{ overflowY: "scroll", maxHeight: "28.5em", padding: "1em" }}
       >
         <Card.Group
           itemsPerRow={3}
