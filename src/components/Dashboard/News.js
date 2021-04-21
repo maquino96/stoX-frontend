@@ -14,7 +14,7 @@ const News = () => {
 
     return (
 
-        <Container style={{height: '25em', overflowY: 'scroll', paddingBottom: '1em'}}> 
+        <Container style={{height: '35em', overflowY: 'scroll', paddingBottom: '1em'}}> 
             <Item.Group divided>
                 {newsComponents}
             </Item.Group>    

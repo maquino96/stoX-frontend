@@ -51,7 +51,7 @@ const HeadNav = ({handleWatchlistClick}) => {
 
     return (
         <div>
-            <Header as='h1' style={{padding: '1em', paddingBottom: '.5em', backgroundColor: '#34526f'}}>
+            <Header as='h1' style={{padding: '1em', paddingBottom: '.5em', backgroundColor: '#FFFFFF'}}>
             <Modal
             centered={false}
             open={open}

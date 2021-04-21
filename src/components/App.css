@@ -36,3 +36,32 @@
     transform: rotate(360deg);
   }
 }
+
+/* div.App {
+
+background-color: #34526f;
+
+} */
+
+div.ui.card.widgetCard {
+  opacity: 1;
+}
+
+/* div.widgetdiv {
+
+  background-color: #282c34;
+  color: 'white';
+
+} */
+
+/* div.ui.segment {
+
+  background-image: linear-gradient(90deg, #020024 0%, #090979 35%, #00d4ff 100%);
+
+
+} */
+
+/* div.ui.cards {
+
+
+} */

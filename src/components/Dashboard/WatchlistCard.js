@@ -10,7 +10,7 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import { updateUser } from '../appSlice'
 
-const WatchlistCard = ({ stock }) => {
+const WatchlistCard = ({ stock, handleSearchRequest }) => {
   const [hover, setHover] = useState(false)
   const dispatch = useDispatch()
   const user = useSelector(state => state.app.user)
@@ -35,7 +35,7 @@ const WatchlistCard = ({ stock }) => {
   if (stockList) {
     return (
       <Card.Group style={{ paddingLeft: user.name==='Guest' ? '4em' : "3.5em", paddingTop: '0px', marginTop: '0px' }}>
-        <Card style={{marginRight: '0px'}}>
+        <Card className='widgetCard' style={{marginRight: '0px'}} onClick={(e)=>handleSearchRequest(stock)}>
           <Card.Content>
           <Grid textAlign='center'>
 

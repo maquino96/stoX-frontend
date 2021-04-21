@@ -5,7 +5,7 @@ import Dashboard from "./Dashboard";
 import StockDetail from "./StockDetail";
 import PublicWatchlist from "./PublicWatchlist";
 import { useDispatch, useSelector } from "react-redux";
-import { Container } from "semantic-ui-react";
+import { Container, Header, Icon, Divider } from "semantic-ui-react";
 import {
   updateUser,
   updateStockInfo,
@@ -138,6 +138,7 @@ function App() {
               .then((r) => r.json())
               .then((data) => {
                 dispatch(updateBatchSimInfo(data));
+                history.push('/stockdetail')
               });
         });
 
@@ -146,6 +147,7 @@ function App() {
           fetch(`${process.env.REACT_APP_BACKEND_URL}/alt/${symbol}`)
           .then((r) => r.json())
           .then((data) => { 
+            
             // console.log(data)
             alert(`Please try one of the followings symbols: ${data}`)
 
@@ -213,9 +215,15 @@ function App() {
     }
 
   }
+  
+  const gitClick = (e) => {
+    e.preventDefault()
+    window.open('https://github.com/maquino96/ApartmentHunter-frontend', "_blank")
+
+  }
 
   return (
-    <div className="App">
+    <div className="App" style={{height: '125%'}}>
       <HeadNav
       handleWatchlistClick={handleWatchlistClick}
       />
@@ -226,6 +234,7 @@ function App() {
             <Dashboard 
             handleLogin={handleLogin} 
             handleWatchlistClick={handleWatchlistClick}
+            handleSearchRequest={handleSearchRequest}
             />
           </Container>
         </Route>
@@ -240,12 +249,19 @@ function App() {
           <PublicWatchlist />
         </Route>
         <Route exact path="/watchlist">
-          <Watchlist />
+          <Watchlist handleSearchRequest={handleSearchRequest}/>
         </Route>
         <Route path="*">
           <h1 class="error"> Error: 404 NOT FOUND</h1>
         </Route>
       </Switch>
+      <Divider style={{marginTop: '3em', marginBottom: '0'}}/>
+      <Header style={{height: '1.5em', textAlign: 'left', marginTop:'1em'}}>
+        <div onClick={(e)=>gitClick(e)} style={{paddingBottom: '1em'}}>
+        <Icon name='github' style={{paddingLeft: '1em', paddingTop: '.25em'}}/> 
+        <Header.Content style={{paddingLeft: '2em', paddingTop: '.5em', fontSize: '10px'}}> Matt Aquino</Header.Content>
+        </div>
+        </Header>
     </div>
   );
 }

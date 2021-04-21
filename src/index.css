@@ -25,3 +25,8 @@ code {
 .ui.cards::-webkit-scrollbar {
   display: none;
 }
+
+div.App {
+/* background-color: rgb(2,0,36); */
+/* background-image: url(SpaceBG.jpg);  */
+}

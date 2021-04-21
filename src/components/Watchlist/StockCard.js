@@ -3,7 +3,7 @@ import {Card, Icon } from 'semantic-ui-react'
 import {useSelector, useDispatch} from 'react-redux'
 import { updateUser } from '../appSlice'
 
-const StockCard = ({stock, listName}) => {
+const StockCard = ({stock, listName, handleSearchRequest}) => {
     const [hover, setHover] = useState(false)
     const dispatch = useDispatch()
     const user = useSelector(state => state.app.user)
@@ -26,12 +26,10 @@ const StockCard = ({stock, listName}) => {
     if(stock){
 
     return (
-        <>
         <Card.Group>
-        <Card style={{ width: "82%", marginLeft: "9px", marginRight: '5px', marginTop: '7px', marginBottom: '7px', height: '2em' }}><div style={{marginTop: '5px'}}>{stock}</div></Card>
+        <Card style={{ width: "82%", marginLeft: "9px", marginRight: '5px', marginTop: '7px', marginBottom: '7px', height: '2em' }} onClick={(e)=>handleSearchRequest(stock)}><div style={{marginTop: '5px'}}>{stock}</div></Card>
         <Icon onClick={(e)=>handleStockDelete(e)} onMouseEnter={(e)=>setHover(true)} onMouseLeave={()=>setHover(false)} name='close' size='large' style={{marginTop: '11px'}} color={hover && 'red'}/>
         </Card.Group>   
-        </>
     )
     } else {
         return( <></>)

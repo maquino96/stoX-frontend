@@ -6,7 +6,7 @@ import NewListForm from "./Watchlist/NewListForm";
 import {updateUser} from './appSlice'
 import EditForm from "./Watchlist/EditForm";
 
-const Watchlist = () => {
+const Watchlist = ({handleSearchRequest}) => {
 
   const dispatch = useDispatch()
 
@@ -52,6 +52,7 @@ const Watchlist = () => {
           edit={edit}
           setEdit={setEdit}
           handleEditForm={handleEditForm}
+          handleSearchRequest={handleSearchRequest}
         />
       );
     }

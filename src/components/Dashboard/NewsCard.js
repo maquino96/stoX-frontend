@@ -19,7 +19,7 @@ const NewsCard = ({news}) => {
         }
   
         <Item.Content>
-          <div style={{paddingTop: hidden && '2em', fontSize: hidden ? '20px' : '16px'}}>
+          <div style={{paddingTop: hidden && '1.5em', fontSize: hidden ? '20px' : '16px'}}>
           <Item.Header as='a' onClick={(e)=>handleArticleClick(e)}>{news.headline}</Item.Header>
           <Item.Meta style={{fontSize: hidden ? '14px' : '10px'}}>
             <span className='source'>Source: {news.source}</span>

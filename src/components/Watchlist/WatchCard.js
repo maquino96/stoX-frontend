@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { updateUser } from "../appSlice";
 import StockCard from './StockCard'
 
-const WatchCard = ({ listName, stocksArray, listID, edit, setEdit, handleEditForm }) => {
+const WatchCard = ({ listName, stocksArray, listID, edit, setEdit, handleEditForm, handleSearchRequest }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.app.user);
   const [hover, setHover] = useState(false)
@@ -47,7 +47,7 @@ const WatchCard = ({ listName, stocksArray, listID, edit, setEdit, handleEditFor
   }
 
   if (stocksArray) {
-    const stockComponents = stocksArray.map((symbol) => ( <StockCard key={symbol} stock={symbol} listName={listName}/>
+    const stockComponents = stocksArray.map((symbol) => ( <StockCard key={symbol} stock={symbol} listName={listName} handleSearchRequest={handleSearchRequest}/>
     ));
     return (
       <Card style={{ height: "350px", width: "300px", borderStyle: listName === user.loadwatchlist && 'solid' }}>
