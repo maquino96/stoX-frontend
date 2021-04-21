@@ -60,24 +60,27 @@ const StockInfo = ({ addToWishlist }) => {
           <Grid.Row>
             <Container>
               {!user.watchlists[user.loadwatchlist].arrayList.includes(stockInfo.symbol) ? 
-              <Button onClick={(e) => handleAddClick(e)}> Add to Watchlist</Button>
+              <Button onClick={(e) => handleAddClick(e)} color='black' style={{borderColor: 'white', border: 'solid', borderWidth: '2px'}}  > Add to Watchlist</Button>
               :
-              <Button basic color='red' onClick={(e)=>handleRemoveClick(e)}> Remove from Watchlist</Button>
+              <Button color='red' onClick={(e)=>handleRemoveClick(e)} style={{borderColor: 'white', border: 'solid', borderWidth: '2px'}}> Remove from Watchlist</Button>
               }
             </Container>
           </Grid.Row>
 
           <Grid.Row>
             <Grid.Column width={16}>
-              <Header as="h3" dividing style={{ padding: ".5em" }}>
+              <Header as="h3" dividing style={{ padding: ".5em", fontFamily: 'Futura,Trebuchet MS,Arial,sans-serif', color: 'white', fontSize: '20px', fontWeight: '700' }}>
                 {`Profile: ${stockInfo.company_name ? stockInfo.company_name : stockInfo.companyName}`}
               </Header>
               <Container
+                fluid
                 style={{
                   fontSize: "1.25em",
                   textAlign: "Left",
-                  fontFamily:
-                    "Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif",
+                  fontFamily: 'Futura,Trebuchet MS,Arial,sans-serif',
+                  backgroundColor: 'white',
+                  padding: '1em', 
+                  opacity: '.95'
                 }}
               >
                 {stockInfo.description}
@@ -87,7 +90,7 @@ const StockInfo = ({ addToWishlist }) => {
 
           <Grid.Row>
             <Grid.Column width={5}>
-              <Table celled striped>
+              <Table style={{opacity: '.93'}}>
                 <Table.Body>
                   <Table.Row>
                     <Table.Cell>
@@ -142,7 +145,7 @@ const StockInfo = ({ addToWishlist }) => {
             </Grid.Column>
 
             <Grid.Column width={5}>
-              <Table celled striped>
+              <Table style={{opacity: '.95'}}>
                 <Table.Body>
                   <Table.Row>
                     <Table.Cell>
@@ -197,7 +200,7 @@ const StockInfo = ({ addToWishlist }) => {
             </Grid.Column>
 
             <Grid.Column width={6}>
-              <Table celled striped>
+              <Table style={{opacity: '.93'}}>
                 <Table.Body>
                   <Table.Row>
                     <Table.Cell>
@@ -252,7 +255,7 @@ const StockInfo = ({ addToWishlist }) => {
             </Grid.Column>
           </Grid.Row>
 
-          <Grid.Row centered>Suggested Stock Title</Grid.Row>
+          <Grid.Row centered style={{fontFamily: 'Futura,Trebuchet MS,Arial,sans-serif', color: 'white', fontSize: '20px', fontWeight: '700'}}>Suggested StoX</Grid.Row>
         </Grid>
       </Container>
     </div>

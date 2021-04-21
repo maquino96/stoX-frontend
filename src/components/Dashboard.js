@@ -8,12 +8,12 @@ const Dashboard = ({ handleSearchRequest, handleLogin, handleWatchlistClick }) =
   // let history = useHistory();
 
   return (
-    <div>
+    <div style={{paddingBottom: '3em'}}>
       <Container>
       <Grid>
 
         <Grid.Row>
-        <Header style={{marginTop: '.5em', marginBottom: '0em', paddingLeft: '28em', fontSize: '22px'}}> Daily News </Header>
+        <Header style={{marginTop: '.5em', marginBottom: '.5em', paddingLeft: '20em', fontSize: '28px', color: 'white'}}> Daily News </Header>
 
             <News />
         </Grid.Row>

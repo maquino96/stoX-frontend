@@ -35,7 +35,7 @@ const WatchlistCard = ({ stock, handleSearchRequest }) => {
   if (stockList) {
     return (
       <Card.Group style={{ paddingLeft: user.name==='Guest' ? '4em' : "3.5em", paddingTop: '0px', marginTop: '0px' }}>
-        <Card className='widgetCard' style={{marginRight: '0px'}} onClick={(e)=>handleSearchRequest(stock)}>
+        <Card className='widgetCard' style={{marginRight: '0px', opacity: '1'}} onClick={(e)=>handleSearchRequest(stock)}>
           <Card.Content>
           <Grid textAlign='center'>
 

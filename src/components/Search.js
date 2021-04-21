@@ -19,7 +19,7 @@ const Search = ({handleSearchRequest}) => {
 
 
     return (
-      <div style={{padding: '1em'}}>
+      <div style={{padding: '2em'}}>
         <Container>
         <Form style={{padding: '0em'}} onSubmit={handleSearch} width={4}> 
           <Form.Input

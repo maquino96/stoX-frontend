@@ -13,9 +13,9 @@ const NewsCard = ({news}) => {
     }
 
     return (
-        <Item onClick={()=>setHidden(!hidden)}>
+        <Item onClick={()=>setHidden(!hidden)} style={{backgroundColor: 'white', opacity: '0.95'}}>
         {news.image &&
-        <Item.Image src={news.image} style={{marginTop: '2em'}}/>
+        <Item.Image src={news.image} style={{marginTop: '2em', marginLeft: '1em', marginBottom: '1em'}}/>
         }
   
         <Item.Content>

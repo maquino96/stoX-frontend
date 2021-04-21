@@ -12,7 +12,7 @@ const WatchlistWidget = ({handleWatchlistClick, handleSearchRequest}) => {
     const watchlistCards = user.watchlists[user.loadwatchlist].arrayList.map( stock => <WatchlistCard key={stock} stock={stock} handleSearchRequest={handleSearchRequest}/>)
 
     return (
-        <div className='widgetdiv' style={{textAlign: 'center'}}>
+        <div className='widgetdiv' style={{textAlign: 'center', opacity: '.95'}}>
             <Card style={{textAlign: 'center', width: '100%', height: '110%'}}>
                 <Grid.Row >
                     <Header onClick={(e) => handleWatchlistClick(e)} style={{paddingTop: '.75em', fontFamily: 'Futura,Trebuchet MS,Arial,sans-serif', fontSize: '20px', fontWeight: '700'}}>Watchlist ({user.loadwatchlist})</Header>

@@ -39,9 +39,17 @@
 
 /* div.App {
 
-background-color: #34526f;
+background-image: url(../market.jpg);
 
 } */
+
+div.App { 
+  background: url(../market2.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 
 div.ui.card.widgetCard {
   opacity: 1;
@@ -64,4 +72,8 @@ div.ui.card.widgetCard {
 /* div.ui.cards {
 
 
+} */
+
+/* .ui.checkbox .box:after, .ui.checkbox label:after {
+  color: 'white';
 } */

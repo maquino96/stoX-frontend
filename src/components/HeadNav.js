@@ -51,7 +51,7 @@ const HeadNav = ({handleWatchlistClick}) => {
 
     return (
         <div>
-            <Header as='h1' style={{padding: '1em', paddingBottom: '.5em', backgroundColor: '#FFFFFF'}}>
+            <Header as='h1' color='black' style={{padding: '1em', paddingBottom: '.5em', backgroundColor: '#000000'}}>
             <Modal
             centered={false}
             open={open}
@@ -61,14 +61,14 @@ const HeadNav = ({handleWatchlistClick}) => {
             >
                 <LoginContainer setOpen={setOpen}/>
             </Modal>
-                <Menu  pointing secondary style={{padding: '0em', fontSize: '.6em'}}>
+                <Menu  pointing secondary color='white' style={{padding: '0em', fontSize: '.6em', color: 'white'}}>
                 <Header.Content onClick={(e) => handleStoxClick(e)} style={{fontSize: '3em', fontFamily: 'Futura,Trebuchet MS,Arial,sans-serif', fontWeight: 700}}> StoX </Header.Content>
                     <Menu.Menu position='right'>
-                    <Menu.Item onClick={(e) => handleStoxClick(e)}>Home</Menu.Item> 
-                    <Menu.Item onClick={(e)=>handleWatchlistClick(e)}> My Lists </Menu.Item>
-                    <Menu.Item onClick={(e)=>handlePubliclistCLick(e)}>Forum</Menu.Item>
-                    { user.name === 'Guest' ? <Menu.Item onClick={()=>setOpen(true)}>Login</Menu.Item> : 
-                    <Menu.Item onClick={(e)=>handleLogout(e)}>Logout</Menu.Item> }
+                    <Menu.Item onClick={(e) => handleStoxClick(e)} style={{color: 'white'}}>Home</Menu.Item> 
+                    <Menu.Item onClick={(e)=>handleWatchlistClick(e)} style={{color: 'white'}}> My Lists </Menu.Item>
+                    <Menu.Item onClick={(e)=>handlePubliclistCLick(e)} style={{color: 'white'}}>Forum</Menu.Item>
+                    { user.name === 'Guest' ? <Menu.Item onClick={()=>setOpen(true)} style={{color: 'white'}}>Login</Menu.Item> : 
+                    <Menu.Item onClick={(e)=>handleLogout(e)} style={{color: 'white'}}>Logout</Menu.Item> }
                     
                     </Menu.Menu>
                 </Menu>

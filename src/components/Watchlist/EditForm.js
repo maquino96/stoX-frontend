@@ -6,7 +6,7 @@ const EditForm = ({edit, setEdit, formData, setFormData, updateForm, handleCheck
     return (
         <div style={{ padding: "1em" }}>
           <Form onSubmit={(e) => handleUpdate(e)}>
-          <Header as='h3' style={{ fontFamily: 'Futura,Trebuchet MS,Arial,sans-serif', fontWeight: 700}}> UPDATE LIST INFO </Header>
+          <Header as='h3' style={{ fontFamily: 'Futura,Trebuchet MS,Arial,sans-serif', fontWeight: 700, color: 'white'}}> UPDATE LIST INFO </Header>
             <Form.Group>
               <Form.Input
                 width={14}
@@ -25,11 +25,12 @@ const EditForm = ({edit, setEdit, formData, setFormData, updateForm, handleCheck
                   fontSize: "16px",
                 }}
                 checked={!formData.public}
-                label="Private List"
+                // label="Private List"
                 name="public"
                 // value={formData.public}
                 onChange={handleCheck}
               />
+              <label style={{color: 'white', marginLeft: '1em', marginTop: '.5em', fontSize: '16px'}}>Private List</label>
             </Form.Group>
     
             <Form.TextArea
@@ -39,7 +40,7 @@ const EditForm = ({edit, setEdit, formData, setFormData, updateForm, handleCheck
               onChange={updateForm}
             />
     
-            <Form.Button type="submit">Update</Form.Button>
+            <Form.Button color='black' type="submit">Update</Form.Button>
           </Form>
         </div>
       );

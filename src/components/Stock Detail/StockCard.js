@@ -20,7 +20,7 @@ const StockCard = ({ stock, handleSearchRequest }) => {
         onClick={() => {
           handleSearchRequest(symbol);
         }}
-        style={{ width: "15em", padding: "1em" }}
+        style={{ width: "15em", padding: "1em", opacity: '.95' }}
       >
         <Card.Content>
           <Card.Header>{stock}</Card.Header>

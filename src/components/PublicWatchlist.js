@@ -46,6 +46,7 @@ const PublicWatchlist = () => {
 
   return (
     <div style={{ padding: "1em", maxHeight: "50em" }}>
+      <h1 style={{fontFamily: 'Futura,Trebuchet MS,Arial,sans-serif', color: 'white', fontSize: '32px', fontWeight: '700'}}>All Public Lists</h1>
       <Container style={{}}>
         <Grid>
           <Grid.Column width={11} style={{paddingTop: '14px'}}>

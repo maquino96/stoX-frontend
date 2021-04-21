@@ -127,8 +127,8 @@ const Watchlist = ({handleSearchRequest}) => {
   }
 
   return (
-    <Container>
-      <h1 style={{paddingTop: '.5em'}}>Personal Watchlists</h1>
+    <Container style={{paddingBottom: '3em'}}>
+      <h1 style={{paddingTop: '.5em', color: 'white', fontFamily: 'Futura,Trebuchet MS,Arial,sans-serif'}}>Personal Watchlists</h1>
       <Container
         style={{ overflowY: "scroll", maxHeight: "28.5em", padding: "1em" }}
       >

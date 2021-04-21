@@ -36,8 +36,6 @@ function App() {
     // let date = new Date()
     // let currMins = date.getHours()*60 + date.getMinutes()
 
-    // console.log(user.loadwatchlist)
-
     fetch(`${process.env.REACT_APP_BACKEND_URL}/treemapdata`)
       .then( r => r.json())
       .then( data => {dispatch(updateTreemap(data))
@@ -53,12 +51,9 @@ function App() {
         dispatch(updateNews(news));
       });
 
-      
-
     fetch(`${process.env.REACT_APP_BACKEND_URL}/batch/${user.watchlists[user.loadwatchlist].arrayList.join(",")}`)
       .then((r) => r.json())
       .then((data) => {
-        // console.log(data)
         dispatch(updateBatchWatchlist(data));
       });
 
@@ -66,21 +61,18 @@ function App() {
 
     //   if ( currMins < (9*60+30) && currMins < (23*60) ) {
 
-    //     console.log('2 credit call')
-
-    //     fetch(`${process.env.REACT_APP_BACKEND_URL}/batch/${watchlistString}`)
+    //     fetch(`${process.env.REACT_APP_BACKEND_URL}/batch/${user.watchlists[user.loadwatchlist].arrayList.join(",")}`)
     //     .then( r => r.json())
     //     .then( data => {
-    //       console.log(data)
+    //       console.log('PAGE-RELOADED,data)
     //       dispatch(updateBatchWatchlist(data))})
-
     //   }
-
-    // }, 60000)
+    // }, 20000)
 
     // return function cleanup () {
     //   clearInterval(id)
     // }
+
   }, [dispatch, user.watchlists, user.loadwatchlist]);
 
   const handleLogin = (event) => {
@@ -223,6 +215,7 @@ function App() {
   }
 
   return (
+    <>
     <div className="App" style={{height: '125%'}}>
       <HeadNav
       handleWatchlistClick={handleWatchlistClick}
@@ -255,14 +248,15 @@ function App() {
           <h1 class="error"> Error: 404 NOT FOUND</h1>
         </Route>
       </Switch>
-      <Divider style={{marginTop: '3em', marginBottom: '0'}}/>
-      <Header style={{height: '1.5em', textAlign: 'left', marginTop:'1em'}}>
-        <div onClick={(e)=>gitClick(e)} style={{paddingBottom: '1em'}}>
-        <Icon name='github' style={{paddingLeft: '1em', paddingTop: '.25em'}}/> 
-        <Header.Content style={{paddingLeft: '2em', paddingTop: '.5em', fontSize: '10px'}}> Matt Aquino</Header.Content>
+      </div>
+      {/* <Divider style={{marginTop: '3em', marginBottom: '0'}}/> */}
+      <Header style={{height: '100%', textAlign: 'left', marginTop:'0em', backgroundColor: 'black'}}>
+        <div onClick={(e)=>gitClick(e)} style={{paddingTop: '.75em', paddingBottom: '1em', backgroundColor: 'black'}}>
+        <Icon name='github' inverted style={{paddingLeft: '1em', paddingTop: '.25em'}}/> 
+        <Header.Content style={{paddingLeft: '2em', paddingTop: '.5em', fontSize: '10px', color: 'white'}}> Matt Aquino</Header.Content>
         </div>
         </Header>
-    </div>
+    </>
   );
 }
 
