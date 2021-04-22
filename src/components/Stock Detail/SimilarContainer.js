@@ -19,11 +19,11 @@ const SimilarContainer = ({ handleSearchRequest }) => {
     return (
       <div>
         <Container
-          style={{ overflowY: "hidden", overflowX: "scroll", height: "18em" }}
+          style={{ overflowY: "hidden", overflowX: "scroll", height: "13em" }}
         >
           <Card.Group
             itemsPerRow={similarObj.length}
-            style={{ width: "150%", padding: "1em" }}
+            style={{ width: "150%", padding: "1em"}}
           >
             {similarComponents}
           </Card.Group>
@@ -33,7 +33,7 @@ const SimilarContainer = ({ handleSearchRequest }) => {
   } else {
     return (
       <Container style={{ overflowY: "hidden", overflowX: "scroll", height: "18em" }}>
-        <Dimmer.Dimmable as={Segment} dimmed={true} style={{height: '10em'}}>
+        <Dimmer.Dimmable as={Segment} dimmed={true} style={{height: '7em'}}>
           <Dimmer active={true} inverted>
             <Loader>Loading</Loader>
           </Dimmer>

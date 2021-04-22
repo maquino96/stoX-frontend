@@ -13,7 +13,7 @@ const Dashboard = ({ handleSearchRequest, handleLogin, handleWatchlistClick }) =
       <Grid>
 
         <Grid.Row>
-        <Header style={{marginTop: '.5em', marginBottom: '.5em', paddingLeft: '20em', fontSize: '28px', color: 'white'}}> Daily News </Header>
+        <Header style={{marginTop: '.5em', marginBottom: '.5em', paddingLeft: '2em', fontSize: '28px', color: 'white'}}> Daily News </Header>
 
             <News />
         </Grid.Row>

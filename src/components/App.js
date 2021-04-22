@@ -5,7 +5,7 @@ import Dashboard from "./Dashboard";
 import StockDetail from "./StockDetail";
 import PublicWatchlist from "./PublicWatchlist";
 import { useDispatch, useSelector } from "react-redux";
-import { Container, Header, Icon, Divider } from "semantic-ui-react";
+import { Container, Header, Icon } from "semantic-ui-react";
 import {
   updateUser,
   updateStockInfo,
@@ -59,15 +59,14 @@ function App() {
 
     // const id = setInterval( () => {
 
-    //   if ( currMins < (9*60+30) && currMins < (23*60) ) {
+    //   if ( currMins > (570) && currMins < (960) ) {
 
     //     fetch(`${process.env.REACT_APP_BACKEND_URL}/batch/${user.watchlists[user.loadwatchlist].arrayList.join(",")}`)
     //     .then( r => r.json())
-    //     .then( data => {
-    //       console.log('PAGE-RELOADED,data)
+    //     .then( data => { console.log('PAGE-RELOADED',data)
     //       dispatch(updateBatchWatchlist(data))})
     //   }
-    // }, 20000)
+    // }, 10000)
 
     // return function cleanup () {
     //   clearInterval(id)

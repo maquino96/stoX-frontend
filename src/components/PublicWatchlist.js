@@ -45,14 +45,14 @@ const PublicWatchlist = () => {
 
 
   return (
-    <div style={{ padding: "1em", maxHeight: "50em" }}>
-      <h1 style={{fontFamily: 'Futura,Trebuchet MS,Arial,sans-serif', color: 'white', fontSize: '32px', fontWeight: '700'}}>All Public Lists</h1>
+    <div style={{ padding: "1em", height: "52.5em" }}>
+      <h1 style={{fontFamily: 'Futura,Trebuchet MS,Arial,sans-serif', color: 'white', fontSize: '32px', fontWeight: '700', marginBottom: '7px'}}>All Public Lists</h1>
       <Container style={{}}>
         <Grid>
-          <Grid.Column width={11} style={{paddingTop: '14px'}}>
+          <Grid.Column width={11} style={{paddingTop: '5px'}}>
             <Card.Group
               itemsPerRow={2}
-              style={{ overflowY: "scroll", maxHeight: "53.5em"}}
+              style={{ overflowY: "scroll", height: "45em", marginTop: '0'}}
             >
               {sort ?  byMostRecent : byMostUpvotes }
             </Card.Group>
@@ -62,7 +62,7 @@ const PublicWatchlist = () => {
               <Segment
                 raised
                 style={{
-                  marginBottom: "3em",
+                  marginBottom: "1em",
                   height: "9em",
                   borderWidth: "5px",
                   borderColor: "black",
@@ -72,17 +72,17 @@ const PublicWatchlist = () => {
                   showNoResults={false}
                   value={searchTerm}
                   onSearchChange={(e)=>setSearchTerm(e.target.value)}/>
-                  <div><label> Most Recent </label><Checkbox toggle onChange={()=>setSort(!sort) } style={{paddingTop: '1em', marginLeft: '1em', marginRight: '1em'}}/> <label> Most Upvotes </label> </div>
+                  <div><label> Most Recent </label><Checkbox toggle onChange={()=>setSort(!sort) } style={{paddingTop: '1em', marginLeft: '1em', marginRight: '1em', marginTop: '0px'}}/> <label> Most Upvotes </label> </div>
               </Segment>
 
               {clickedObj ? (
                 <Segment
                   raised
                   style={{
-                    marginTop: "2em",
+                    marginTop: "1em",
                     borderWidth: "5px",
                     borderColor: "black",
-                    height: "41.5em",
+                    height: "37em",
                     // overflowY: "scroll",
                   }}
                 >
@@ -94,7 +94,7 @@ const PublicWatchlist = () => {
                     {" "}
                     Count: {clickedObj.arrayList.length} || Votes:{" "} {clickedObj.upvotes}
                   </Header.Subheader>
-                  <Segment style={{height: '24em', overflowY: 'scroll', marginTop: '7px', paddingTop: '7px', marginBottom: '7px' }}>
+                  <Segment style={{height: '20em', overflowY: 'scroll', marginTop: '7px', paddingTop: '7px', marginBottom: '7px' }}>
                   {clickedObj.arrayList.map((stock) => (
                     <Card
                       style={{
