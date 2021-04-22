@@ -22,6 +22,7 @@ export const slice = createSlice({
         publicList: [],
         treemap: {},
         news: {},
+        candleData: {}, 
     },
     reducers: {
         updateUser: (state,action) => {
@@ -57,6 +58,9 @@ export const slice = createSlice({
         updateNews: (state, action) => { 
             state.news = action.payload
         },
+        updateCandleData: (state, action) => { 
+            state.candleData = action.payload
+        },
     }
 })
 
@@ -70,7 +74,8 @@ const { updateUser,
         updateChartData,
         updatePublicList,
         updateTreemap,
-        updateNews} = slice.actions
+        updateNews,
+        updateCandleData} = slice.actions
 
 export {updateUser, 
         updateSearch, 
@@ -82,5 +87,6 @@ export {updateUser,
         updateChartData,
         updatePublicList,
         updateTreemap,
-        updateNews}
+        updateNews,
+        updateCandleData}
 export default slice.reducer

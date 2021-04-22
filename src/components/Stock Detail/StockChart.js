@@ -44,7 +44,10 @@ const StockChart = () => {
             autosize: true,
             width: 1150,
             height: 550,
-            title: `${stockInfo.company_name ? stockInfo.company_name : stockInfo.companyName} (${stockInfo.symbol})`,
+            title: { 
+              text: `${stockInfo.company_name ? stockInfo.company_name : stockInfo.companyName} (${stockInfo.symbol})`,
+              y: 0.97
+          },
             xaxis: {
               showgrid: false,
               nticks: 13,

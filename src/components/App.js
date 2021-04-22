@@ -17,7 +17,8 @@ import {
   updateChartData,
   updatePublicList,
   updateTreemap,
-  updateNews
+  updateNews,
+  updateCandleData,
 } from "./appSlice";
 import Search from "./Search.js";
 import HeadNav from "./HeadNav";
@@ -117,7 +118,8 @@ function App() {
       fetch(`${process.env.REACT_APP_BACKEND_URL}/chartdata/${symbol}`)
         .then((r) => r.json())
         .then((data) => {
-          dispatch(updateChartData(data));
+          dispatch(updateChartData(data.line))
+          dispatch(updateCandleData(data.candle))
         });
   
       fetch(`${process.env.REACT_APP_BACKEND_URL}/similarstock/${symbol}`)

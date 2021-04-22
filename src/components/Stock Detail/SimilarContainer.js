@@ -19,7 +19,7 @@ const SimilarContainer = ({ handleSearchRequest }) => {
     return (
       <div>
         <Container
-          style={{ overflowY: "hidden", overflowX: "scroll", height: "13em" }}
+          style={{ overflowY: "hidden", overflowX: "scroll", height: "14.5em" }}
         >
           <Card.Group
             itemsPerRow={similarObj.length}

@@ -1,4 +1,4 @@
-import React from "react";
+import {useState} from "react";
 import {
   Container,
   Grid,
@@ -8,13 +8,16 @@ import {
   Button,
   Dimmer,
   Loader,
-  Segment
+  Segment,
+  Checkbox
 } from "semantic-ui-react";
 import { useSelector, useDispatch } from "react-redux";
 import StockChart from "./StockChart";
 import {updateUser} from '../appSlice'
+import CandlestickChart from "./CandlestickChart";
 
 const StockInfo = ({ addToWishlist }) => {
+  const [chart, setChart] = useState(true)
   const stockInfo = useSelector((state) => state.app.stockInfo);
   const keyData = useSelector((state) => state.app.keyData);
   const user = useSelector( state => state.app.user)
@@ -53,8 +56,9 @@ const StockInfo = ({ addToWishlist }) => {
     <div>
       <Container style={{ padding: "1em" }}>
         <Grid>
-          <Grid.Row centered>
-            <StockChart />
+          <Grid.Row style={{paddingTop: '0em'}}>
+            <Checkbox toggle onChange={()=>setChart(!chart)}style={{margin: '0em 1em'}}/>
+            {chart ? <StockChart /> : <CandlestickChart/> }
           </Grid.Row>
 
           <Grid.Row>

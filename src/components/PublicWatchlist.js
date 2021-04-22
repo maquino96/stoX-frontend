@@ -9,7 +9,6 @@ const PublicWatchlist = () => {
   const [searchTerm, setSearchTerm] = useState('')
   const [clickedObj, setClickedObj] = useState(null);
   const [sort, setSort] = useState(true)
-  console.log(sort)
 
   const publicList = useSelector((state) => state.app.publicList);
 
