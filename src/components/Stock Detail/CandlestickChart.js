@@ -7,7 +7,7 @@ const CandlestickChart = () => {
   const candleData = useSelector((state) => state.app.candleData);
   const stockInfo = useSelector((state) => state.app.stockInfo);
 
-  if (candleData) {
+  if (candleData.open) {
 
 
   var trace1 = {

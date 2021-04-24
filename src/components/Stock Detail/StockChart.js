@@ -8,7 +8,7 @@ const StockChart = () => {
   const chartData = useSelector((state) => state.app.chartData);
   const stockInfo = useSelector((state) => state.app.stockInfo);
 
-  if (chartData) {
+  if (chartData.averageY) {
 
   let Price = {
 
