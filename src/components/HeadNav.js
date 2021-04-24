@@ -52,15 +52,16 @@ const HeadNav = ({handleWatchlistClick}) => {
     return (
         <div>
             <Header as='h1' color='black' style={{padding: '1em', paddingBottom: '.5em', backgroundColor: '#000000'}}>
-            <Modal
-            centered={false}
-            open={open}
-            onClose={() => setOpen(false)}
-            // onOpen={() => setOpen(true)}
-            // trigger={<Menu.Item>Logout</Menu.Item>}
-            >
-                <LoginContainer setOpen={setOpen}/>
-            </Modal>
+                <Modal
+                centered={false}
+                open={open}
+                onClose={() => setOpen(false)}
+                // onOpen={() => setOpen(true)}
+                // trigger={<Menu.Item>Logout</Menu.Item>}
+                >
+                    <LoginContainer setOpen={setOpen}/>
+                </Modal>
+                
                 <Menu  pointing secondary color='white' style={{padding: '0em', fontSize: '.6em', color: 'white'}}>
                 <Header.Content onClick={(e) => handleStoxClick(e)} style={{fontSize: '3em', fontFamily: 'Futura,Trebuchet MS,Arial,sans-serif', fontWeight: 700}}> StoX </Header.Content>
                     <Menu.Menu position='right'>

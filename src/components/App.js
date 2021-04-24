@@ -75,6 +75,18 @@ function App() {
 
   }, [dispatch, user.watchlists, user.loadwatchlist]);
 
+  const handleError = (response) => {
+
+
+    if (!response.ok) {
+      // Should be throwing the error and making use of catch but with the conitional originally built in if(data.symbol) the code is working in the way I intended.
+      // throw Error(response.statusText)
+      // console.log(response.statusText)
+    }
+    return response;
+
+  }
+
   const handleLogin = (event) => {
     event.preventDefault();
 
@@ -103,7 +115,8 @@ function App() {
   const handleSearchRequest = (symbol = searchSymbol) => {
     // fetch to the backend using the searchSymbol, on a route to a controller that'll make the api requests, make use of env variables here
     fetch(`${process.env.REACT_APP_BACKEND_URL}/stocks/${symbol}`)
-      .then((r) => r.json())
+      // .then((r) => r.json())
+      .then(handleError)
       .then((data) => { 
         // console.log(typeof data, data)
         if (data.symbol ){
@@ -131,9 +144,10 @@ function App() {
               .then((r) => r.json())
               .then((data) => {
                 dispatch(updateBatchSimInfo(data));
-                history.push('/stockdetail')
               });
         });
+
+        history.push('/stockdetail')
 
         } else { 
           history.push('/')

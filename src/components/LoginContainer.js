@@ -40,6 +40,7 @@ const LoginContainer = ({setOpen}) => {
         formData={formData}
         setFormData={setFormData}
         updateForm={updateForm}
+        setOpen={setOpen}
       />
 
     }

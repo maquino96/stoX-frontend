@@ -2,11 +2,15 @@ import React from "react";
 import {Form, Button} from "semantic-ui-react";
 import { useDispatch } from 'react-redux'
 import { updateUser } from "../appSlice"
+import {useHistory} from 'react-router-dom'
 
 
-const SignupForm = ({formData, setFormData, isHidden, setIsHidden, updateForm}) => {
+
+const SignupForm = ({formData, setFormData, isHidden, setIsHidden, updateForm, setOpen}) => {
     const dispatch = useDispatch()
+    const history= useHistory()
     // const user = useSelector ( state => state.app.user )
+    console.log(isHidden)
 
     const handleSignupSubmit = (event) => {
         event.preventDefault();
@@ -26,7 +30,12 @@ const SignupForm = ({formData, setFormData, isHidden, setIsHidden, updateForm}) 
               });
             //   console.log(user)
               setIsHidden(!isHidden);
+              setOpen(false)
+              // console.log(isHidden)
+              // history.push('/')
               alert("Thank you for signing up!")
+
+              
               
             //   history.push('/listings')
             } else {

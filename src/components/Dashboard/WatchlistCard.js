@@ -38,12 +38,12 @@ const WatchlistCard = ({ stock, handleSearchRequest }) => {
         <Card className='widgetCard' style={{marginRight: '0px', opacity: '1'}} onClick={(e)=>handleSearchRequest(stock)}>
           <Card.Content>
           <Grid textAlign='center'>
-
+{/* 
           <Grid.Row style={{height: '1em', padding: '5px', paddingBottom: '5px', fontSize: '10px'}}>
               <Grid.Column style={{ maxHeight:'10px', overflowY: 'hide' }}>
               {stockList.quote.companyName}
               </Grid.Column>
-            </Grid.Row>
+            </Grid.Row> */}
 
             <Grid.Row style={{paddingTop: '15px', paddingBottom: '5px'}}>
             <Grid.Column width={4}>
