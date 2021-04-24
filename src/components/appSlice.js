@@ -18,11 +18,11 @@ export const slice = createSlice({
         keyData: {},
         similarStock: [],
         batchSimInfo: {},
-        chartData: {},
+        chartData: {working: true},
         publicList: [],
         treemap: {},
         news: {},
-        candleData: {}, 
+        candleData: {working: true}, 
     },
     reducers: {
         updateUser: (state,action) => {

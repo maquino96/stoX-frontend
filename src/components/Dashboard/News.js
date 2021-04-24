@@ -21,7 +21,7 @@ const News = () => {
         </Container>
     )
     } else {
-     return ( <></>)
+     return ( <Container style={{minHeight: '5em'}}></Container>)
     }
 }
 

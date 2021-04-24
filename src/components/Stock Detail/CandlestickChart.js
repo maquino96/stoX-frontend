@@ -7,6 +7,9 @@ const CandlestickChart = () => {
   const candleData = useSelector((state) => state.app.candleData);
   const stockInfo = useSelector((state) => state.app.stockInfo);
 
+  if (candleData) {
+
+
   var trace1 = {
     x: candleData.x,
     close: candleData.close,
@@ -67,6 +70,9 @@ const CandlestickChart = () => {
       <Plot data={data} layout={layout} />
     </Container>
   );
+} else {
+  return <></>;
+}
 };
 
 export default CandlestickChart;

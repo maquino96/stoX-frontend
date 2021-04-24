@@ -8,10 +8,10 @@ const StockChart = () => {
   const chartData = useSelector((state) => state.app.chartData);
   const stockInfo = useSelector((state) => state.app.stockInfo);
 
-  if (chartData.minutesX) {
+  if (chartData) {
 
   let Price = {
-    
+
     x: chartData.minutesX,
     y: chartData.averageY,
     type: "scatter",
@@ -35,7 +35,6 @@ const StockChart = () => {
   
     return (
       <Container style={{paddingTop: '1em'}}>
-
 
         <Plot
           data={[ Price, 
