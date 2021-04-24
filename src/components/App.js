@@ -115,7 +115,7 @@ function App() {
   const handleSearchRequest = (symbol = searchSymbol) => {
     // fetch to the backend using the searchSymbol, on a route to a controller that'll make the api requests, make use of env variables here
     fetch(`${process.env.REACT_APP_BACKEND_URL}/stocks/${symbol}`)
-      // .then((r) => r.json())
+      .then((r) => r.json())
       .then(handleError)
       .then((data) => { 
         // console.log(typeof data, data)
