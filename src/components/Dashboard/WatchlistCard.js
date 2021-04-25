@@ -50,7 +50,8 @@ const WatchlistCard = ({ stock, handleSearchRequest }) => {
             <Icon
                   size="large"
                   name={stockList.quote.change > 0 ? "caret up" : "caret down"}
-                  color={stockList.quote.change >= 0 ? "green" : "red"}
+                  // color={stockList.quote.change >= 0 ? "green" : "red"}
+                  style={{color: stockList.quote.change >= 0 ? "green" : "red" }}
             />
             </Grid.Column>
 
@@ -71,7 +72,7 @@ const WatchlistCard = ({ stock, handleSearchRequest }) => {
           </Card.Content>
         </Card>
         { user.name !== 'Guest' &&  
-        <Icon onClick={(e)=>handleWidgetDelete(e)} onMouseEnter={(e)=>setHover(true)} onMouseLeave={()=>setHover(false)} name='close' size='large' style={{marginTop: '12px'}} color={hover && 'red'}/>
+        <Icon onClick={(e)=>handleWidgetDelete(e)} onMouseEnter={(e)=>setHover(true)} onMouseLeave={()=>setHover(false)} name='close' size='large' style={{marginTop: '12px', color: hover && 'red'}}/>
         }
         </Card.Group>
     );

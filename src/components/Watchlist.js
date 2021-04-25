@@ -72,7 +72,7 @@ const Watchlist = ({handleSearchRequest}) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(formData);
+    // console.log(formData);
 
     fetch(`${process.env.REACT_APP_BACKEND_URL}/newlist/`, {
       method: "POST",

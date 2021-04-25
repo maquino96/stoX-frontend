@@ -76,14 +76,19 @@ function App() {
   }, [dispatch, user.watchlists, user.loadwatchlist]);
 
   const handleError = (response) => {
-
     if (!response.ok) {
-      // Should be throwing the error and making use of catch but with the conitional originally built in if(data.symbol) the code is working in the way I intended.
-      // throw Error(response.statusText)
-      console.log(response.statusText)
+      history.push('/')
+      fetch(`${process.env.REACT_APP_BACKEND_URL}/alt/${searchSymbol}`)
+      .then((r) => r.json())
+      .then((data) => { 
+        
+        // console.log(data)
+        alert(`Please try one of the followings symbols: ${data}`)
+
+      })
+      // console.log(response.statusText)
     }
     return response;
-
   }
 
   const handleLogin = (event) => {
@@ -117,8 +122,6 @@ function App() {
       .then(handleError)
       .then((r) => r.json())
       .then((data) => { 
-        console.log(typeof data, data)
-        if (data.symbol ){
         dispatch(updateStockInfo(data)) 
 
         fetch(`${process.env.REACT_APP_BACKEND_URL}/stockdata/${symbol}`)
@@ -145,21 +148,7 @@ function App() {
                 dispatch(updateBatchSimInfo(data));
               });
         });
-
         history.push('/stockdetail')
-
-        } else { 
-          history.push('/')
-          fetch(`${process.env.REACT_APP_BACKEND_URL}/alt/${symbol}`)
-          .then((r) => r.json())
-          .then((data) => { 
-            
-            // console.log(data)
-            alert(`Please try one of the followings symbols: ${data}`)
-
-          })
-
-           }
       });
 
 

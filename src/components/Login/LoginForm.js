@@ -14,6 +14,15 @@ const LoginForm = ({
   const user = useSelector((state) => state.app.user);
   const dispatch = useDispatch();
 
+  const handleError = (response) => {
+    if (!response.ok) {
+        // console.log(data)
+        alert("Username or password incorrect, please try again")
+      // console.log(response.statusText)
+    }
+    return response;
+  }
+
   const handleLoginSubmit = (event) => {
     event.preventDefault();
 
@@ -22,9 +31,9 @@ const LoginForm = ({
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
     })
+      .then(handleError)
       .then((r) => r.json())
       .then((loginUser) => {
-        if (loginUser.name) {
           fetch(
             `${process.env.REACT_APP_BACKEND_URL}/batch/${loginUser.watchlists[
               user.loadwatchlist
@@ -37,10 +46,8 @@ const LoginForm = ({
           dispatch(updateUser(loginUser));
           setFormData({ name: "", password: "" })
           setOpen(false)
-        } else {
-          alert("Username or Password is incorrect");
-        }
-      });
+      })
+      .catch(error => {})
   };
 
   // const handleLogout = (e) => {

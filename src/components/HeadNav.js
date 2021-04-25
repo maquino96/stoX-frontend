@@ -62,7 +62,7 @@ const HeadNav = ({handleWatchlistClick}) => {
                     <LoginContainer setOpen={setOpen}/>
                 </Modal>
                 
-                <Menu  pointing secondary color='white' style={{padding: '0em', fontSize: '.6em', color: 'white'}}>
+                <Menu  pointing secondary style={{padding: '0em', fontSize: '.6em', color: 'white'}}>
                 <Header.Content onClick={(e) => handleStoxClick(e)} style={{fontSize: '3em', fontFamily: 'Futura,Trebuchet MS,Arial,sans-serif', fontWeight: 700}}> StoX </Header.Content>
                     <Menu.Menu position='right'>
                     <Menu.Item onClick={(e) => handleStoxClick(e)} style={{color: 'white'}}>Home</Menu.Item> 
