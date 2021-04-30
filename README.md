@@ -1,4 +1,6 @@
 
+___ For my latest work, please visit my [personal website](https://www.mattaquino.dev/)___
+
 Stox was built with a React frontend, Rails backend, Redux for  state management and the Semantic UI CSS Framework.
 
 It is a stock screener and stock quoting app which allows you to create lists of stocks depending on what you’re interested in.
